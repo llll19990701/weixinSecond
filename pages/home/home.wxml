@@ -1,2 +1,9 @@
-<!--pages/home/home.wxml-->
-<text>pages/home/home.wxml</text>
+<!--首页-->
+<view>
+ <view class="swiper">
+  <swiper>
+    <swiper-item></swiper-item>
+  </swiper>
+ </view>
+</view>
+

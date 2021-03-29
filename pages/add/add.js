@@ -1,13 +1,11 @@
-// pages/home/home.js
+// pages/add/add.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-   swiperData:[],//轮播图
-   category:[],
- 
+
   },
 
   /**
