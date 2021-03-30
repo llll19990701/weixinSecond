@@ -1,9 +1,45 @@
 <!--首页-->
 <view>
- <view class="swiper">
-  <swiper>
-    <swiper-item></swiper-item>
+  <view class="search-contianer" style="height:{{navHeight}}px">
+  <view class="search" style="height:{{searchHeight}}px; margin-top:{{searchTop}}px; width:{{searchWidth}}px;">
+   
+    <input placeholder-class="search-placeholder"
+      style=" width: 100%;height:30px;" type="text" placeholder="好物搜索" disabled
+      value="{{name}}" bindinput="bindinput" bindtap="goSearch"></input>
+  </view>
+</view>
+ <view class="swiper-container" >
+  <swiper class="swiper" autoplay indicator-active-color="grey"  circular>
+    <swiper-item class="swiper-item" wx:for="{{imageUrl}}" wx:key="{{index}}" >
+      <image src="{{item}}" class="slide-image" />
+      </swiper-item>
   </swiper>
  </view>
+ <view class="category-container">
+   <view class="category-box"> 
+     <swiper class="category-swiper" indicator-active-color="grey"  indicator-dots="{{indicatorDots}}" loop="false" style="height:{{categoryLunHeight}}px">
+       <swiper-item class="category-swiper-item" wx:for="{{categoryGroups}}">
+          <view class="category-item" wx:for="{{item}}" wx:key="{{id}}">
+            <view class="category-item-colum">
+              <image class="category-item-icon" src="{{item.categoryUrl}}"/>
+              <view>{{item.categoryName}}</view>
+            </view>    
+      </view>  
+       </swiper-item>
+     </swiper>
+   </view>
+    
+ </view>
+ <!-- <view class="category-container">
+   <view class="category-box"> 
+      <view class="category-item" wx:for="{{category}}" wx:key="{{id}}">
+        <view class="category-item-colum">
+          <image class="category-item-icon" src="{{item.categoryUrl}}"/>
+           <view>{{item.categoryName}}</view>
+        </view>    
+      </view>  
+   </view>
+    
+ </view> -->
 </view>
 
