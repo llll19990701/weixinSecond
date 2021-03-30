@@ -1,4 +1,6 @@
 {
   "navigationStyle": "custom",
-  "usingComponents": {}
+  "usingComponents": {
+    "van-notice-bar": "/miniprogram_npm/vant-weapp/notice-bar/index"
+  }
 }

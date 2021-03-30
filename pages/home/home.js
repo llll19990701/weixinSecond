@@ -25,8 +25,11 @@ Page({
      {id:8,categoryName:"其他",categoryUrl:"/images/category/qita.png"},
      {id:9,categoryName:"文化体育",categoryUrl:"/images/category/tiyu.png"},
      {id:10,categoryName:"其他",categoryUrl:"/images/category/qita.png"},
-    
    ],
+   noticeList:[
+     {id:1,title:"最新发布消息此处可看，系统公告1"},
+    //  {id:2,title:"最新发布消息此处可看，系统公告2"}
+   ]
   },
 
   /**

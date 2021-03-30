@@ -41,5 +41,15 @@
    </view>
     
  </view> -->
+ <view class="notice-box" wx:if="{{noticeList}}">
+  <swiper class="notice_swiper" vertical autoplay circular interval="8000">
+    <swiper-item wx:for="{{noticeList}}" wx:key="id">
+      <van-notice-bar wx:if="{{noticeList}}" mode="link" text="{{ item.title }}" background="#FFFFFF"
+        data-id="{{ item.id }}" speed="30" bind:click="goNotice">
+        <image slot="left-icon" class="notice-icon" src="/images/zuixingonggao_3.png"/>
+      </van-notice-bar>
+    </swiper-item>
+  </swiper>
+</view>
 </view>
 

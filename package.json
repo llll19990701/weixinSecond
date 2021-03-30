@@ -1,0 +1,14 @@
+{
+  "name": "secondmarket",
+  "version": "1.0.0",
+  "description": "西华大学校园跳蚤市场",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "muzi",
+  "license": "ISC",
+  "dependencies": {
+    "vant-weapp": "^0.5.29"
+  }
+}

@@ -51,7 +51,7 @@ view {
 }
 .category-container{
   width: 100%;
-  min-height: 100px;
+  min-height: 140px;
 }
 .category-box{
   width: 700rpx;
@@ -98,4 +98,28 @@ view {
   width: 32px;
   height: 28px;
   margin-bottom: 5px;
+}
+.notice-icon {
+  width: 130rpx;
+  height: 33rpx;
+  margin-right: 10px;
+}
+
+.notice-box {
+  width: 100vw;
+  height: 88rpx;
+  line-height: 88rpx;
+  border-bottom: 1rpx solid #efeff4;
+}
+
+.notice_swiper {
+  height: 88rpx;
+  width: 100%;
+}
+
+.notice_itemr {
+  padding-left: 16rpx;
+  font-size: 24rpx;
+  overflow: hidden;
+  color: #e64340;
 }
