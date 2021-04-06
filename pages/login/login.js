@@ -67,34 +67,39 @@ Page({
         wx.request({
           url: app.globalData.apiConfig.login_url,
           data:{
-            code:mes.code,                 
+            "code":mes.code,                 
           },
-          method:'post',
+          header: {
+            // 'content-type': 'application/json'
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+          method:'POST',
           success(re){
-            wx.setStorageSync('openId', re.Openid)
-          //  if(re.data.length==0){
-          //    //用户未注册 进行注册
-          //    wx.request({
-          //      url: 'url',//为用户注册的接口
-          //      data:{
-          //        weiXin:wx.getStorageSync('openId'),
-          //        nickName:wx.getStorageSync('nickName'),
-          //        avatarUrl:wx.getStorageSync('avatarUrl')
-          //      },
-          //      method:'post',
-          //      success(){  
-          //        wx.reLaunch({ //成功之后进入首页
-          //          url: '/pages/home/home',
-          //        })                
-          //      }
-          //    })
-          //  }
-          //  else{
-          //    //已注册用户，直接获取全部信息
-          //    wx.reLaunch({
-          //     url: '/pages/home/home',
-          //   })       
-          //  }
+            console
+            wx.setStorageSync('userId', re.userid)
+           if(re.data){
+             //用户未注册 进行注册
+             wx.request({
+               url: 'url',//为用户注册的接口
+               data:{
+                 weiXin:wx.getStorageSync('openId'),
+                 nickName:wx.getStorageSync('nickName'),
+                 avatarUrl:wx.getStorageSync('avatarUrl')
+               },
+               method:'post',
+               success(){  
+                 wx.reLaunch({ //成功之后进入首页
+                   url: '/pages/home/home',
+                 })                
+               }
+             })
+           }
+           else{
+             //已注册用户，直接获取全部信息
+             wx.reLaunch({
+              url: '/pages/home/home',
+            })       
+           }
           }
         })
       }
