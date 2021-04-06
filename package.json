@@ -9,6 +9,7 @@
   "author": "muzi",
   "license": "ISC",
   "dependencies": {
+    "@vant/weapp": "^1.6.8",
     "vant-weapp": "^0.5.29"
   }
 }

@@ -29,6 +29,12 @@ Page({
    noticeList:[
      {id:1,title:"最新发布消息此处可看，系统公告1"},
     //  {id:2,title:"最新发布消息此处可看，系统公告2"}
+   ],
+   recommenedList:[
+     {id:1,imageUrl:"/images/pic1.png",title:'推荐测试',originPrice:30,nowPrice:15},
+     {id:2,imageUrl:"/images/pic1.png",title:'推荐测试',originPrice:30,nowPrice:15},
+     {id:3,imageUrl:"/images/pic1.png",title:'推荐测试',originPrice:30,nowPrice:15},
+     {id:4,imageUrl:"/images/pic1.png",title:'推荐测试',originPrice:30,nowPrice:15},
    ]
   },
 
@@ -139,5 +145,17 @@ Page({
       })
         console.log(categoryGroup)
       },
-     
+  categoryCLick:function(e){
+    //const categoryId=e.currentTarget.dataset.id//获取到目标类别id
+    const category=this.data.category.find(ele=>{
+      return ele.id=e.currentTarget.dataset.id
+    })
+    wx.setStorage({
+      data: category.id,
+      key: 'cureenCateId',
+    })
+    wx.switchTab({
+      url: '/pages/classify/classify',
+    })
+  }
 })

@@ -1,7 +1,12 @@
 /* pages/home/home.wxss */
+
 view {
   box-sizing: border-box;
   overflow: hidden;
+}
+home-scroll{
+  width: 100%;
+  height: 100%;
 }
 .search-container {
   background-color: white;
@@ -11,21 +16,25 @@ view {
   position: relative;
   width: 100vw;
   display: flex;
+  align-items: center;
   box-sizing: border-box;
   padding-left: 26rpx;
   background-color: white;
+  border:1px solid gainsboro;
+  border-radius: 60rpx;
 }
 
 .search input {
   display: block;
   box-sizing: border-box;
-  margin-top: 5rpx;
   padding:0 10rpx;
   font-size: 12px;
-  border:1px solid gainsboro;
-  border-radius: 60rpx;
 }
-
+.seach-icon{
+width: 24px;
+height:21px ;
+margin-right: 5px;
+}
 .search-title {
   left: 0;
   font-weight: bold;
@@ -51,7 +60,7 @@ view {
 }
 .category-container{
   width: 100%;
-  min-height: 140px;
+  min-height: 145px;
 }
 .category-box{
   width: 700rpx;
@@ -110,6 +119,7 @@ view {
   height: 88rpx;
   line-height: 88rpx;
   border-bottom: 1rpx solid #efeff4;
+  background-color: white;
 }
 
 .notice_swiper {
@@ -122,4 +132,60 @@ view {
   font-size: 24rpx;
   overflow: hidden;
   color: #e64340;
+}
+.entrance{
+  width: 100%;
+  height: 100px;
+}
+.space{
+  width: 100%;
+  height: 20rpx;
+  background-color: #F2f2f2;
+}
+.entrance-list{
+  width: 100%;
+  display: flex;
+  height: 220rpx;
+  justify-content: space-evenly;
+  background-color: #fff;
+  margin-top: 10px;
+}
+.qiuGou,.topic{
+  width:350rpx;
+  height: 180rpx;
+  line-height: 180rpx;
+  background-color: rgb(0, 119, 128,0.5);
+  border-radius: 40rpx;
+  border-radius: 40rpx;
+  text-align: center;
+}
+.topic{
+  background-color:#72e6c9;
+}
+.qiuGouText,.topicText{
+  font-size:24px;
+  font-weight: bolder;
+  font-family: cursive;
+  color: #fcfcfd;
+  text-shadow: 1px 0px 30px 2px rgba(5, 5, 5, 0.3); 
+}
+.good-container{
+  width: 100%;
+  min-height: 200px;
+  background-color: #fcfcfd;
+}
+.table-text {
+  color: black !important;
+  font-size: 16px !important;
+  padding: 0 28rpx;
+}
+.table-icon-miaosha {
+  width: 34rpx;
+  height: 42rpx;
+  margin-right: 18rpx;
+}
+.good-list{
+ width: 100%;
+ display: flex;
+ flex-wrap: wrap;
 }

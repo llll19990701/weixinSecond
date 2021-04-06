@@ -1,9 +1,12 @@
 {
   "pages":[
+    "pages/login/login",
     "pages/home/home",
     "pages/my/my",
     "pages/add/add",
+    "pages/classify/classify",
     "pages/index/index"
+    
   ],
   "window":{
     "backgroundTextStyle":"dark",
@@ -19,6 +22,12 @@
       "text":"首页" ,
       "iconPath": "images/home.png",
       "selectedIconPath": "images/home_active.png"
+    },
+    {
+      "pagePath": "pages/classify/classify",
+      "text": "分类",
+      "iconPath": "images/classify.png",
+      "selectedIconPath": "images/classify_active.png"
     },
     {
       "pagePath": "pages/add/add",

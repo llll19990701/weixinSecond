@@ -1,13 +1,13 @@
 <!--首页-->
-<view>
   <view class="search-contianer" style="height:{{navHeight}}px">
-  <view class="search" style="height:{{searchHeight}}px; margin-top:{{searchTop}}px; width:{{searchWidth}}px;">
-   
+  <view class="search" style="height:{{searchHeight}}px; margin-top:{{searchTop+1}}px; width:{{searchWidth}}px;">
     <input placeholder-class="search-placeholder"
-      style=" width: 100%;height:30px;" type="text" placeholder="好物搜索" disabled
+      style=" width: 188px;height:30px;" type="text" placeholder="好物搜索" disabled
       value="{{name}}" bindinput="bindinput" bindtap="goSearch"></input>
+      <image class="seach-icon" src="/images/search.png"></image>
   </view>
-</view>
+  </view>
+<scroll-view class="home-scroll" scroll-y>
  <view class="swiper-container" >
   <swiper class="swiper" autoplay indicator-active-color="grey"  circular>
     <swiper-item class="swiper-item" wx:for="{{imageUrl}}" wx:key="{{index}}" >
@@ -19,8 +19,8 @@
    <view class="category-box"> 
      <swiper class="category-swiper" indicator-active-color="grey"  indicator-dots="{{indicatorDots}}" loop="false" style="height:{{categoryLunHeight}}px">
        <swiper-item class="category-swiper-item" wx:for="{{categoryGroups}}">
-          <view class="category-item" wx:for="{{item}}" wx:key="{{id}}">
-            <view class="category-item-colum">
+          <view id="cate+{{item.id}}"  class="category-item" wx:for="{{item}}" wx:key="id" bindtap="categoryCLick"  data-id="{{item.id}}" >
+            <view class="category-item-colum" >
               <image class="category-item-icon" src="{{item.categoryUrl}}"/>
               <view>{{item.categoryName}}</view>
             </view>    
@@ -51,5 +51,25 @@
     </swiper-item>
   </swiper>
 </view>
+
+<view class="entrance">
+   <view class="space"></view>
+   <view class="entrance-list" bindtap="">
+     <view class="qiuGou">
+      <view class="qiuGouText">话题广场</view>
+     </view>
+     <view class="topic">
+     <view class="topicText">求购中心</view>
+     </view>
+   </view>
 </view>
+<view class="good-container">
+  <van-divider custom-class="table-text" contentPosition="center">
+      <image class="table-icon-miaosha" src="/images/recommend.png"></image> 好物推荐
+   </van-divider>
+   <view class="good-list">
+     <goodItem wx:for="{{recommenedList}}" recommenedItem="{{item}}"></goodItem>
+   </view>
+</view>
+</scroll-view>
 

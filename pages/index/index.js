@@ -14,14 +14,16 @@ Page({
   // 事件处理函数
   bindViewTap() {
     wx.navigateTo({
-      url: '../logs/logs'
+      url: '/logs/logs'
     })
   },
   onLoad() {
+    console.log(wx.getUserProfile())
     if (wx.getUserProfile) {
       this.setData({
         canIUseGetUserProfile: true
       })
+      
     }
   },
   getUserProfile(e) {
@@ -35,6 +37,9 @@ Page({
           userInfo: res.userInfo,
           hasUserInfo: true
         })
+      },
+      fail:(res)=>{
+        console.log("你拒绝了请求")
       }
     })
   },

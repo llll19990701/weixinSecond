@@ -1,0 +1,66 @@
+/* components/goodIist/goodList.wxss */
+view{
+  display: block
+}
+.goods-containers{
+ background-color: #f7f8fa;
+ width: 100%;
+ height: 100px;
+ display: flex;
+ justify-items: center;
+ align-items: center;
+ justify-content: space-between;
+}
+.goods-image{
+width: 100px;
+height: 100px;
+}
+.goods-img{
+  width: 100px;
+  height: 100px;
+}
+.good-info{
+  width: 200px;
+  height:100px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.good-infos{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.good-title{
+      width: 100%;
+      font-size: 32rpx;
+      letter-spacing: 3rpx;
+      line-height: 45rpx;
+}
+.good-owner{
+  padding-top: 10rpx;
+  width: 100%;
+  font-size: 27rpx;
+  letter-spacing: 3rpx;
+  line-height: 40rpx;
+  color: rgb(129, 129, 129);
+}
+.good-between{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 1rpx solid #eee;
+  padding-bottom: 10rpx;
+}
+.good-price{
+  font-size: 36rpx;
+  color: rgb(255, 0, 0);
+}
+.good-publishTime{
+  font-size: 28rpx;
+  letter-spacing: 2rpx;
+  color: rgb(129, 129, 129);
+  padding-right: 5rpx;
+}

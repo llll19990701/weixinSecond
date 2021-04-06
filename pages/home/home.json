@@ -1,6 +1,8 @@
 {
   "navigationStyle": "custom",
   "usingComponents": {
-    "van-notice-bar": "/miniprogram_npm/vant-weapp/notice-bar/index"
+    "van-notice-bar": "/miniprogram_npm/@vant/weapp/notice-bar/index",
+    "van-divider":"/miniprogram_npm/@vant/weapp/divider/index",
+    "goodItem":"/components/goodItem/goodItem"
   }
 }

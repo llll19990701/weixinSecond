@@ -1,0 +1,1 @@
+@import '../common/index.wxss';.van-sidebar{width:100px;width:var(--sidebar-width,80px);overflow:scroll;}

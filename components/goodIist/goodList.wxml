@@ -1,0 +1,19 @@
+<!--components/goodIist/goodList.wxml-->
+<wxs src="../../common.wxs" module="morejs" />
+<view class="goods-containers">
+   <view class="goods-image">
+     <image class="goods-img" src="{{GoodList.image}}"></image>
+   </view>
+   <view class="good-info">
+     <view class="good-infos">
+        <view class="good-title">{{GoodList.title}}</view>
+         <view class="good-owner">{{GoodList.publisher}}</view>
+     </view>
+   
+    <view class="good-between">
+       <view class="good-price">¥ {{GoodList.nowPrice}}</view>
+       <view class="good-publishTime">于{{morejs.timelog(GoodList.create)}}发布</view>
+    </view>
+   
+   </view>
+</view>

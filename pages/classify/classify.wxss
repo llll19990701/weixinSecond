@@ -1,0 +1,20 @@
+/* pages/classify/classify.wxss */
+page {
+  width: 100vw;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+.main {
+  flex: 1;
+  display: flex;
+  height: 100%;
+}
+.goods-category{
+  width: 200rpx;
+  height: 100%;
+}
+.goods-container{
+  width: calc(100% - 80px);
+  height: 100%;
+}

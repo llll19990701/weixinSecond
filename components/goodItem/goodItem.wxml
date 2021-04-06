@@ -1,0 +1,13 @@
+<!--components/goodItem/goodItem.wxml-->
+<view class="good-box">
+    <view class="image-box">
+       <image src="{{recommenedItem.imageUrl}}" class="good-image"></image>
+     </view>
+     <view class="good-title">{{recommenedItem.title}}</view>
+      <view class="goods-price-container">
+       <view class="good-price">¥ {{recommenedItem.nowPrice}}</view>
+       <view class="good-price2">¥ {{recommenedItem.originPrice}}</view>
+     </view>
+</view>
+    
+    

@@ -1,0 +1,12 @@
+<!--pages/classify/classify.wxml-->
+<van-search value="{{ name }}" placeholder="请输入搜索关键词" shape="round" bind:search="bindconfirm" />
+<view class="main">
+  <scroll-view class="goods-category" scroll-y>
+    <van-sidebar active-key="{{activeCategory}}">
+      <van-sidebar-item id="category{{item.id}}" wx:for="{{Categories}}" wx:key="id" data-idx="{{index}}"  title="{{item.categoryName}}" />
+    </van-sidebar>
+  </scroll-view>
+  <scroll-view class="goods-container" scroll-y>
+    <goodList id="good{{item.id+1}}" wx:for="{{goodList}}"  wx:key="id" GoodList="{{item}}"></goodList>
+  </scroll-view>
+</view>

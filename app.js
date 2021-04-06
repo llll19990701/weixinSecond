@@ -6,13 +6,13 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
-    // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        console.log(res)
-      }
-    })
+    // // 登录
+    // wx.login({
+    //   success: res => {
+    //     // 发送 res.code 到后台换取 openId, sessionKey, unionId
+    //     console.log(res,"llllllllllllllllllllllllll")
+    //   }
+    // })
      // ---------------检测navbar高度
     let menuButtonInfo = wx.getMenuButtonBoundingClientRect();
     // console.log("小程序胶囊信息",menuButtonObject)
