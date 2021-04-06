@@ -7,6 +7,6 @@
     </van-sidebar>
   </scroll-view>
   <scroll-view class="goods-container" scroll-y>
-    <goodList id="good{{item.id+1}}" wx:for="{{goodList}}"  wx:key="id" GoodList="{{item}}"></goodList>
+    <goodList id="good{{item.id+1}}" wx:for="{{goodList}}"  wx:key="id" GoodList="{{item}}" bindtap="toDetail"></goodList>
   </scroll-view>
 </view>

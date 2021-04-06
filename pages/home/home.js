@@ -157,5 +157,12 @@ Page({
     wx.switchTab({
       url: '/pages/classify/classify',
     })
-  }
+  },
+  toDetail:function(e){
+    wx.navigateTo({
+      //navigateTo 是可以返回的页面跳转
+      url: '/pages/detail/detaile',
+    })
+   }
+
 })

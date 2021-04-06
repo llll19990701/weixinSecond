@@ -68,7 +68,7 @@
       <image class="table-icon-miaosha" src="/images/recommend.png"></image> 好物推荐
    </van-divider>
    <view class="good-list">
-     <goodItem wx:for="{{recommenedList}}" recommenedItem="{{item}}"></goodItem>
+     <goodItem wx:for="{{recommenedList}}" recommenedItem="{{item}}" bindtap="toDetail"></goodItem>
    </view>
 </view>
 </scroll-view>

@@ -1,4 +1,5 @@
 // app.js
+const apiConfig = require('./config');
 App({
   onLaunch() {
     // 展示本地存储能力
@@ -35,6 +36,7 @@ App({
    },
   
   globalData: {
+    apiConfig:apiConfig,
     userInfo: null
   }
 })
