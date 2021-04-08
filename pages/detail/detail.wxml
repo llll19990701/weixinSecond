@@ -1,0 +1,43 @@
+<!--pages/detail/detail.wxml-->
+<wxs src="../../common.wxs" module="morejs" />
+<view class="detail-container">
+  <view class="good-detail-box">
+     <view class="image-box">
+       <swiper class="image-swiper" autoplay circular>
+         <swiper-item class="swiperItem" wx:for="{{goodDetail.image}}" >
+           <image class="image" src="{{item}}"></image>
+         </swiper-item>
+       </swiper>
+     </view>
+     <view class="price-detail">
+       <view class="price-now">¥ {{goodDetail.nowPrice}}</view>
+       <view class="price-origin">¥ {{goodDetail.originPrice}}</view>
+     </view>
+     <view class="title-container">
+        <view class="detail-title">{{goodDetail.title}}</view>
+        <view class="detail-publish">于{{morejs.timelog(goodDetail.create)}}发布</view>
+     </view>
+  </view>
+   <view class="detail-qulity" wx:if="{{goodDetail.quality}}">品质：{{goodDetail.quality}}</view>   
+   <view class="detail-description" wx:if="false"><text class="detail-text">商品描述:\n{{goodDetail.description}}</text></view>
+
+   <view class="detail-bottom">
+     <view class="toHome">
+       <view class="homeIcon" bindtap="toHome">
+           <image class="home" src="/images/home.png"></image>
+       </view>
+       <view class="homeText">首页</view>
+     </view>
+     <view class="collections"> 
+      <view class="collectionIcon" bindtap="changeCollection">
+        <image class="no_active" hidden="{{isCollection}}" src="/images/collect.png"></image>
+        <image class="active" hidden="{{!isCollection}}" src="/images/collect_active.png"></image>
+      </view>
+      <view class="collection">{{isCollectionText}}</view>
+     </view>
+     <view class="button">
+        <view class="concat">联系卖家</view>
+        <view class="pay">立即购买</view>
+     </view>
+   </view>
+</view>

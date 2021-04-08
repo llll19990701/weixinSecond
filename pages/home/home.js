@@ -13,18 +13,20 @@ Page({
       "/images/lunbo/lunbotu6.jpg",
       "/images/lunbo/lunbotu7.jpg"
     ],
+   imageUrlAll:APP.globalData.apiConfig.categoryImage_url,
+   bannerImageUrl:APP.globalData.apiConfig.bannerImage_url,
    swiperData:[],//轮播图
    category:[
-     {id:1,categoryName:"书籍教材",categoryUrl:"/images/category/jiaocai_1.png"},
-     {id:2,categoryName:"电子教育",categoryUrl:"/images/category/dianzichanpin_1.png"},
-     {id:3,categoryName:"服装配饰",categoryUrl:"/images/category/wode-.png"},
-     {id:4,categoryName:"寝居必备",categoryUrl:"/images/category/shenghuoyongpin-copy.png"},
-     {id:5,categoryName:"文化体育",categoryUrl:"/images/category/tiyu.png"},
-     {id:6,categoryName:"其他",categoryUrl:"/images/category/qita.png"},
-     {id:7,categoryName:"文化体育",categoryUrl:"/images/category/tiyu.png"},
-     {id:8,categoryName:"其他",categoryUrl:"/images/category/qita.png"},
-     {id:9,categoryName:"文化体育",categoryUrl:"/images/category/tiyu.png"},
-     {id:10,categoryName:"其他",categoryUrl:"/images/category/qita.png"},
+    //  {id:1,categoryName:"书籍教材",categoryUrl:"/images/category/jiaocai_1.png"},
+    //  {id:2,categoryName:"电子教育",categoryUrl:"/images/category/dianzichanpin_1.png"},
+    //  {id:3,categoryName:"服装配饰",categoryUrl:"/images/category/wode-.png"},
+    //  {id:4,categoryName:"寝居必备",categoryUrl:"/images/category/shenghuoyongpin-copy.png"},
+    //  {id:5,categoryName:"文化体育",categoryUrl:"/images/category/tiyu.png"},
+    //  {id:6,categoryName:"其他",categoryUrl:"/images/category/qita.png"},
+    //  {id:7,categoryName:"文化体育",categoryUrl:"/images/category/tiyu.png"},
+    //  {id:8,categoryName:"其他",categoryUrl:"/images/category/qita.png"},
+    //  {id:9,categoryName:"文化体育",categoryUrl:"/images/category/tiyu.png"},
+    //  {id:10,categoryName:"其他",categoryUrl:"/images/category/qita.png"},
    ],
    noticeList:[
      {id:1,title:"最新发布消息此处可看，系统公告1"},
@@ -35,20 +37,37 @@ Page({
      {id:2,imageUrl:"/images/pic1.png",title:'推荐测试',originPrice:30,nowPrice:15},
      {id:3,imageUrl:"/images/pic1.png",title:'推荐测试',originPrice:30,nowPrice:15},
      {id:4,imageUrl:"/images/pic1.png",title:'推荐测试',originPrice:30,nowPrice:15},
-   ]
+   ],
+   isPullDownRefresh:false,
+   currentPage:1,
+
+   scrollTop:0
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.categoryLunBo(this.data.category)//轮播分组
-    if(this.data.categoryGroups.length>1){
-      this.setData({
-        autoPlay:true,
-        indicatorDots:true,
+
+    const userId=wx.getStorageSync('userId');
+    this.bannerList()
+    if(userId){
+      if(!this.data.isPullDownRefresh){
+          wx.showLoading({
+                  title: '正在加载中...',
+                  icon:'loading',
+                  mask:true
+                })
+                this.bannerList();
+                this.categoryList();
+      }             
+    }else{
+      wx.reLaunch({
+        url: '/pages/login/login',
       })
     }
+    
   },
 
   /**
@@ -73,8 +92,8 @@ Page({
     console.log(menuButtonInfo,"....")
     let margin=navTop-statusBarHeight
 
-    let categoryGroupLenth=this.data.category.length
-    let categoryLunHeight= categoryGroupLenth>4? 2*70:60//动态计算种类轮播高度
+    // let categoryGroupLenth=this.data.category.length
+    // let categoryLunHeight= categoryGroupLenth>4? 2*70:60//动态计算种类轮播高度
 
     this.setData({
       navHeight:navHeight,
@@ -83,7 +102,7 @@ Page({
       margin:margin,
       searchWidth:menuButtonInfo.right-menuButtonInfo.width,
       searchRight:menuButtonInfo.right,
-      categoryLunHeight:categoryLunHeight,
+    //  categoryLunHeight:categoryLunHeight,
       windowHeight: APP.globalData.windowHeight,   
     })
 
@@ -101,16 +120,105 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
   },
-
+  getRecommendGoodList(){
+    wx.request({
+      url: 'url',
+      method:'GET',
+      success:(res)=>{
+        console.log(res)
+      }
+      
+    })
+  },
+  bannerList(){
+    //console.log(APP.globalData.apiConfig.banner_url,"url111111111111111")
+    wx.request({
+      url: APP.globalData.apiConfig.banner_url,
+      method:'GET', 
+      header: {
+        //'content-type': 'application/json'
+       'content-type': 'application/x-www-form-urlencoded'
+     },
+      success:(res)=>{ 
+        console.log(res,"5555555555555555")
+        if(res.statusCode===200){
+          if(!this.data.isPullDownRefresh){
+            wx.hideLoading();
+            wx.hideNavigationBarLoading() //完成停止加载
+          }
+          else{
+            wx.stopPullDownRefresh()
+            wx.hideNavigationBarLoading() //完成停止加载
+            this.setData({
+              isPullDownRefresh:'false'
+            })
+          }
+        }
+        this.setData({     
+          bannerImage:[].concat(res.data.data)
+        })      
+       // console.log(this.data.bannerImage,"bannerImage")
+      }
+  })
+},
+  categoryList(){
+    console.log(APP.globalData.apiConfig.category_url,"url")
+    let that=this
+    wx.request({
+      url: APP.globalData.apiConfig.category_url,
+      method:'GET', 
+      header: {
+        //'content-type': 'application/json'
+       'content-type': 'application/x-www-form-urlencoded'
+     },
+      success:(res)=>{
+        console.log(res,"res")
+        if(res.statusCode===200){
+          if(!this.data.isPullDownRefresh){
+            wx.hideLoading();
+          }
+          else{
+            wx.hideNavigationBarLoading()
+            wx.stopPullDownRefresh()
+            this.setData({
+              isPullDownRefresh:'false'
+            })
+          }
+        }
+        that.setData({
+          category:[].concat(res.data.data),
+        })
+        this.categoryLunBo(this.data.category)//轮播分组
+        if(this.data.categoryGroups.length>1){
+          this.setData({
+            autoPlay:true,
+            indicatorDots:true,
+          })
+        }
+        let categoryGroupLenth=this.data.category.length
+        let categoryLunHeight= categoryGroupLenth>4? 2*70:60//动态计算种类轮播高度
+        that.setData({
+          categoryGroupLenth:categoryGroupLenth,
+          categoryLunHeight:categoryLunHeight
+        })
+        console.log(that.data.category,"csaaddddddddddd")
+      }
+    })
+  },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-
+  onPullDownRefresh: function (e) {
+    let that=this
+    this.setData({
+     currentPage:1,
+    isPullDownRefresh:'true',
+    })
+    //获取商品
+    //获取轮播
+    //获取类别
   },
-
   /**
    * 页面上拉触底事件的处理函数
    */
@@ -155,13 +263,13 @@ Page({
       key: 'cureenCateId',
     })
     wx.switchTab({
-      url: '/pages/classify/classify',
+      url: '/pages/classify/classify?categoryID',
     })
   },
   toDetail:function(e){
     wx.navigateTo({
       //navigateTo 是可以返回的页面跳转
-      url: '/pages/detail/detaile',
+      url: '/pages/detail/detail',     
     })
    }
 

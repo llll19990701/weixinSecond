@@ -1,15 +1,12 @@
 {
   "pages":[
-   "pages/login/login",
     "pages/home/home",
     "pages/my/my",
     "pages/add/add",
     "pages/classify/classify",
-    "pages/index/index",
-    "pages/detail/detaile"
-
-
-    
+    "pages/index/index", 
+      "pages/login/login",
+    "pages/detail/detail"
   ],
   "window":{
     "backgroundTextStyle":"dark",

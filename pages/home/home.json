@@ -1,8 +1,10 @@
 {
   "navigationStyle": "custom",
+  "enablePullDownRefresh": true,
   "usingComponents": {
     "van-notice-bar": "/miniprogram_npm/@vant/weapp/notice-bar/index",
     "van-divider":"/miniprogram_npm/@vant/weapp/divider/index",
+    "van-sticky":"/miniprogram_npm/@vant/weapp/sticky/index",
     "goodItem":"/components/goodItem/goodItem"
   }
 }

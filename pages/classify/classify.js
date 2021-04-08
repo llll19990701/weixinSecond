@@ -48,7 +48,7 @@ Page({
   },
   toDetail:function(e){
    wx.navigateTo({
-     url: '/pages/detail/detaile',
+     url: '/pages/detail/detail',
    })
   },
   /**

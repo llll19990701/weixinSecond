@@ -70,24 +70,32 @@ Page({
             "code":mes.code,                 
           },
           header: {
-            // 'content-type': 'application/json'
+             //'content-type': 'application/json'
             'content-type': 'application/x-www-form-urlencoded'
           },
           method:'POST',
           success(re){
-            console
-            wx.setStorageSync('userId', re.userid)
-           if(re.data){
+            console.log("............................")
+            wx.setStorageSync('userId', re.data.userid)
+           if(re.data.msg){
              //用户未注册 进行注册
-             wx.request({
-               url: 'url',//为用户注册的接口
+             console.log(wx.getStorageSync('nickName'),)
+             console.log(wx.getStorageSync('avatarUrl'))
+             console.log(app.globalData.apiConfig.register_url,"url1")
+             wx.request({           
+               url: app.globalData.apiConfig.register_url,//为用户注册的接口
                data:{
-                 weiXin:wx.getStorageSync('openId'),
-                 nickName:wx.getStorageSync('nickName'),
-                 avatarUrl:wx.getStorageSync('avatarUrl')
-               },
-               method:'post',
-               success(){  
+                 "openId":wx.getStorageSync('userId'),
+                 "nickName":wx.getStorageSync('nickName'),
+                 "avatarUrl":wx.getStorageSync('avatarUrl'),
+               },   
+               header: {
+                // 'content-type': 'application/json'
+                'content-type': 'application/x-www-form-urlencoded'
+              },
+               method:'POST',
+               success(ress){  
+                 console.log(ress,"ress")
                  wx.reLaunch({ //成功之后进入首页
                    url: '/pages/home/home',
                  })                

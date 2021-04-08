@@ -1,0 +1,147 @@
+/* pages/detail/detail.wxss */
+.detail-container{
+  width: 100%;
+  height: 100vh;
+}
+.good-detail-box{
+  width: 100%;
+  min-height: 600rpx;
+  display: flex;
+  flex-direction: column;
+}
+.image-box{
+  width: 100%;
+  height: 450rpx;
+}
+.image-swiper,.swiperItem,.image{
+  width: 100%;
+  height: 100%;
+}
+.price-detail{
+  display: flex;
+  align-items: baseline;
+  
+}
+.price-now{
+  overflow: hidden;
+  font-size: 45rpx;
+  color: #F20C32;
+  margin-left: 20rpx;
+}
+.price-origin{
+  overflow: hidden;
+  font-size: 32rpx;
+  color: #aaa;
+  text-decoration: line-through;
+  margin-left: 20rpx;
+}
+.title-container{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 1rpx solid #eee;
+  padding-bottom: 10rpx;
+}
+.detail-title{
+  width: 280rpx;
+  text-overflow: ellipsis;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 40rpx;
+  padding: 24rpx 0 10rpx 0;
+  color: #000;
+  margin-left: 24rpx;
+}
+.detail-publish{
+  font-size: 32rpx;
+  letter-spacing: 2rpx;
+  color: rgb(129, 129, 129);
+  padding-right: 5rpx;
+}
+.detail-qulity{
+  width: 100%;
+  height: 80rpx;
+  font-size: 32rpx;
+  line-height: 80rpx;
+  border-bottom: 1rpx solid #eee;
+  margin-bottom: 15rpx;
+  padding-left: 15rpx;
+}
+.detail-description{
+  width: 100%;
+  height: 300rpx;
+  font-size: 32rpx;
+  background-color: #eee;
+  border-radius: 30rpx;
+  padding-left: 15rpx;
+  margin-top: 15rpx;
+}
+.detail-text{
+  width: 100%;
+  height: 100%;
+  text-overflow:ellipsis; 
+}
+.detail-bottom{
+  width: 100%;
+  height: 120rpx;
+  line-height: 120rpx;
+  display: flex; 
+  bottom: 0;
+  position: absolute;
+  font-size: 45rpx !important;
+  font-weight: 100;
+  text-align: center;
+  border-top: 1rpx solid #eee;
+  justify-items: center;
+  align-items: center;
+}
+.toHome,.collections{
+width: 120rpx;
+height: 120rpx;
+display: flex;
+flex-direction: column;
+justify-items: center;
+align-items: center;
+}
+.homeIcon,.home,.collectionIcon,.no_active,.active{
+  width: 60rpx;
+  height: 60rpx;
+}
+.homeText,.collection{
+  margin-top: 10px;
+  width: 100%;
+  height: 30rpx;
+  line-height: 30rpx;
+  font-size: 25rpx;
+}
+.button{
+  width: 360rpx;
+  height: 90rpx;
+  position: absolute;
+  right: 20rpx;
+  display: flex;
+  font-size: 35rpx;
+  color: #eee;
+}
+.concat{
+  width: 180rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  border-top-left-radius: 60rpx;
+  border-bottom-left-radius: 60rpx;
+  background: rgb(209, 158, 47);
+}
+.pay{
+  width: 180rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  border-top-right-radius: 60rpx;
+  border-bottom-right-radius: 60rpx;
+  background: rgb(211, 132, 68);
+}
+
+
+
+

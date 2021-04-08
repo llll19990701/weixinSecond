@@ -1,5 +1,6 @@
 {
    "navigationBarTitleText": "分类",
+   "enablePullDownRefresh": true,
   "usingComponents": {
     "goodList":"/components/goodIist/goodList",
     "van-search":"/miniprogram_npm/vant-weapp/search/index",

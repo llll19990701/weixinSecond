@@ -1,5 +1,6 @@
 <!--首页-->
-  <view class="search-contianer" style="height:{{navHeight}}px">
+ <van-sticky>
+   <view class="search-contianer" style="height:{{navHeight}}px">
   <view class="search" style="height:{{searchHeight}}px; margin-top:{{searchTop+1}}px; width:{{searchWidth}}px;">
     <input placeholder-class="search-placeholder"
       style=" width: 188px;height:30px;" type="text" placeholder="好物搜索" disabled
@@ -7,11 +8,12 @@
       <image class="seach-icon" src="/images/search.png"></image>
   </view>
   </view>
-<scroll-view class="home-scroll" scroll-y>
+</van-sticky>
+ 
  <view class="swiper-container" >
   <swiper class="swiper" autoplay indicator-active-color="grey"  circular>
-    <swiper-item class="swiper-item" wx:for="{{imageUrl}}" wx:key="{{index}}" >
-      <image src="{{item}}" class="slide-image" />
+    <swiper-item class="swiper-item" wx:for="{{bannerImage}}" wx:key="{{index}}" >
+      <image src="{{bannerImageUrl+item.img}}" class="slide-image" />
       </swiper-item>
   </swiper>
  </view>
@@ -19,10 +21,10 @@
    <view class="category-box"> 
      <swiper class="category-swiper" indicator-active-color="grey"  indicator-dots="{{indicatorDots}}" loop="false" style="height:{{categoryLunHeight}}px">
        <swiper-item class="category-swiper-item" wx:for="{{categoryGroups}}">
-          <view id="cate+{{item.id}}"  class="category-item" wx:for="{{item}}" wx:key="id" bindtap="categoryCLick"  data-id="{{item.id}}" >
+          <view id="cate+{{item.gcid}}"  class="category-item" wx:for="{{item}}" wx:key="id" bindtap="categoryCLick"  data-id="{{item.gcid}}" >
             <view class="category-item-colum" >
-              <image class="category-item-icon" src="{{item.categoryUrl}}"/>
-              <view>{{item.categoryName}}</view>
+              <image class="category-item-icon" src="{{imageUrlAll+item.categoryimg}}"/>
+              <view>{{item.categoryname}}</view>
             </view>    
       </view>  
        </swiper-item>
@@ -71,5 +73,5 @@
      <goodItem wx:for="{{recommenedList}}" recommenedItem="{{item}}" bindtap="toDetail"></goodItem>
    </view>
 </view>
-</scroll-view>
+
 
