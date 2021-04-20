@@ -77,7 +77,25 @@ function format(dateStr) {
   
    return Y+'-'+M+'-'+D+' '+H+':'+m
 }
+//截取字符串
+var sub = function (val, start = 0, end = 17) {
+      if (val.length == 0 || val == undefined) {
+        return;
+      }
+      if (val.length > end) {
+        return val.substring(start, end) + "...";
+      } else {
+        return val;
+      }
+    }
+
+function image(imageStr){
+      var imageArr=imageStr.split(",")
+      return imageArr[0]
+    }
 module.exports = {
   timelog: commentTimeHandle,
-  format:format
+  format:format,
+  image:image,
+  sub:sub
 }

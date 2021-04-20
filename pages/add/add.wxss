@@ -1,1 +1,69 @@
 /* pages/add/add.wxss */
+.add-container{
+  width:100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.notice{
+  width:100%;
+  height: 70%;
+}
+.title{
+  width:100%;
+  height: 30px;
+  line-height: 30px;
+  font-weight: bold;
+  font-family: sans-serif;
+  font-size: 50rpx;
+  text-align: center;
+  justify-items: center;
+  align-items: center;
+}
+.title-sub{
+  width:100%;
+  height: 18px;
+  line-height:18px;
+  text-indent: 2em;
+  font-family: sans-serif;
+  font-size: 35rpx;
+}
+.content{
+  width:90%;
+  min-height: 42px;
+  font-size: 30rpx;
+  display: flex;
+  flex-direction: column;
+  margin:0 auto;
+}
+.detail{
+  width:80%;
+  word-wrap: break-word;
+  margin:2px auto;
+}
+.pages{
+  width:100vw;
+  height: 30%;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  background-color:  rgba(142, 143, 139, 0.3);
+}
+.transfer{
+ width: 50%;
+ height: 100%;
+ line-height: 100%;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+}
+.transfer-img{
+  width: 180rpx;
+  height: 180rpx;
+  margin-bottom: 5px;
+}
+.text{
+ font-size: 35rpx;
+}

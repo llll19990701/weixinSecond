@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "物品列表",
+  "usingComponents": {
+    "van-search": "/miniprogram_npm/vant-weapp/search",
+    "van-dropdown-menu": "/miniprogram_npm/@vant/weapp/dropdown-menu",
+    "van-dropdown-item": "/miniprogram_npm/@vant/weapp/dropdown-item",
+    "van-card": "/miniprogram_npm/@vant/weapp/card",
+    "van-icon": "/miniprogram_npm/@vant/weapp/icon"
+  }
+}

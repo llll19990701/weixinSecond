@@ -1,0 +1,33 @@
+<wxs src="../../common.wxs" module="tools"></wxs>
+   <block >
+    <view class="{{isdetail? 'commentDetail':'comment-item' }}">
+     <view class="top">
+       <view class="profile">
+         <image src="../../images/weixin (2).png"></image>
+       </view>
+       <view class="info">
+         <view class="nikName">july</view>
+         <view class="time">{{tools.format(161888876960)}}</view>
+       </view>
+     </view>
+     <view class="center">
+       <view class="text">c测试数据，测试数据c测试数据，测试数据c测试数据，测试数据c测试数据，测试数据</view>
+       <view class="image-content" >
+          <view class="images"wx:for="{{image}}" wx:key="{{index}}">
+           <image  class="images{{image.length}}" src="{{item}}" ></image>
+         </view>
+       </view>
+     </view>
+
+     <view class="bottom">
+       <view class="view">
+         <image src="../../images/yikan.png"></image>
+         <view class="viewText">110</view>
+       </view>
+     <image src="../../images/pinglun.png"></image>
+     </view>
+    </view>
+   </block>
+
+
+

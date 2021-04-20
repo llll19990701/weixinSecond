@@ -1,4 +1,5 @@
 // pages/detail/detail.js
+const app=getApp()
 Page({
 
   /**
@@ -7,7 +8,9 @@ Page({
   data: {
      isCollection:false,
      isCollectionText:"收藏",
-     goodDetail:{id:0,title:"测试商品",image:["/images/lunbo/lunbotu2.png","/images/lunbo/lunbotu3.png"],publisher:"july",nowPrice:30,originPrice:60,create:"1617774573172",quality:'九成新',description:"具体请联系我"},        
+     imageUrl:app.globalData.apiConfig.uploadImag_url,
+     punlisher:""
+    //  goodDetail:{id:0,title:"测试商品",image:["/images/lunbo/lunbotu2.png","/images/lunbo/lunbotu3.png"],publisher:"july",nowPrice:30,originPrice:60,create:"1617774573172",quality:'九成新',description:"具体请联系我"},        
   },
   changeCollection:function(){
     let text=''
@@ -36,7 +39,32 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  console.log(this.data.goodDetail)
+  console.log(options,"options222222222222222222")
+  let item=JSON.parse(options.goodItems)
+  console.log(item,"item''''''''''''''")
+  let imgArr=item.goodsimg.split(",")
+  wx.request({
+    url:app.globalData.apiConfig.user_url,
+    data:{
+     "pid":item.pid,
+    },
+    method:'GET',
+    header: {
+      //'content-type': 'application/json'
+     'content-type': 'application/x-www-form-urlencoded'
+   },
+    success:res=>{
+      console.log(res,"user66666666666666666666")
+      this.setData({
+        publisher:res.data.data.nickname
+      })
+    }
+  })
+
+  this.setData({
+    goodImg:[].concat(imgArr),
+    goodDetail:item
+  })
   },
 
   /**

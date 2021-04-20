@@ -8,6 +8,16 @@ Page({
 
   },
 
+  toFabu:function(){
+    wx.navigateTo({
+      url: '/pages/publish/publish',
+    })
+  },
+  toQiuGou:function(){
+    wx.navigateTo({
+      url: '/pages/qiuGou/qiuGou',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

@@ -33,10 +33,10 @@ Page({
     //  {id:2,title:"最新发布消息此处可看，系统公告2"}
    ],
    recommenedList:[
-     {id:1,imageUrl:"/images/pic1.png",title:'推荐测试',originPrice:30,nowPrice:15},
-     {id:2,imageUrl:"/images/pic1.png",title:'推荐测试',originPrice:30,nowPrice:15},
-     {id:3,imageUrl:"/images/pic1.png",title:'推荐测试',originPrice:30,nowPrice:15},
-     {id:4,imageUrl:"/images/pic1.png",title:'推荐测试',originPrice:30,nowPrice:15},
+    //  {id:1,imageUrl:"/images/pic1.png",title:'推荐测试',originPrice:30,nowPrice:15},
+    //  {id:2,imageUrl:"/images/pic1.png",title:'推荐测试',originPrice:30,nowPrice:15},
+    //  {id:3,imageUrl:"/images/pic1.png",title:'推荐测试',originPrice:30,nowPrice:15},
+    //  {id:4,imageUrl:"/images/pic1.png",title:'推荐测试',originPrice:30,nowPrice:15},
    ],
    isPullDownRefresh:false,
    currentPage:1,
@@ -54,15 +54,20 @@ Page({
     this.bannerList()
     if(userId){
       if(!this.data.isPullDownRefresh){
-          wx.showLoading({
-                  title: '正在加载中...',
-                  icon:'loading',
-                  mask:true
-                })
+          // wx.showLoading({
+          //         title: '正在加载中...',
+          //         icon:'loading',
+          //         mask:true
+          //       })
                 this.bannerList();
                 this.categoryList();
+                this.getRecommendGoodList();
       }             
     }else{
+      wx.showToast({
+        title: '请先登录',
+        duration:2000
+      })
       wx.reLaunch({
         url: '/pages/login/login',
       })
@@ -121,24 +126,43 @@ Page({
    */
   onUnload: function () {
   },
+  /**
+   * 搜索
+   */
+  goSearch:function(){
+    wx.navigateTo({
+      url: '/pages/search/search',
+    })
+  },
+    /**
+   * 获取推荐列表
+   */
   getRecommendGoodList(){
     wx.request({
-      url: 'url',
+      url: APP.globalData.apiConfig.recommendGoods_url,
       method:'GET',
+      header: {
+        'content-type': 'application/json'
+       //'content-type': 'application/x-www-form-urlencoded'
+     },
       success:(res)=>{
-        console.log(res)
+        console.log(res,"666666666666666666666")
+        this.setData({recommenedList:this.data.recommenedList.concat(res.data.data)})
       }
       
     })
   },
+    /**
+   * 获取轮播图片
+   */
   bannerList(){
     //console.log(APP.globalData.apiConfig.banner_url,"url111111111111111")
     wx.request({
       url: APP.globalData.apiConfig.banner_url,
       method:'GET', 
       header: {
-        //'content-type': 'application/json'
-       'content-type': 'application/x-www-form-urlencoded'
+        'content-type': 'application/json'
+       //'content-type': 'application/x-www-form-urlencoded'
      },
       success:(res)=>{ 
         console.log(res,"5555555555555555")
@@ -169,8 +193,8 @@ Page({
       url: APP.globalData.apiConfig.category_url,
       method:'GET', 
       header: {
-        //'content-type': 'application/json'
-       'content-type': 'application/x-www-form-urlencoded'
+        'content-type': 'application/json'
+       //'content-type': 'application/x-www-form-urlencoded'
      },
       success:(res)=>{
         console.log(res,"res")
@@ -187,8 +211,10 @@ Page({
           }
         }
         that.setData({
-          category:[].concat(res.data.data),
-        })
+          category:[].concat(res.data.data),          
+        })        
+        wx.setStorageSync('category', that.data.category)
+        console.log(wx.getStorageSync('category'),"111111111111111")
         this.categoryLunBo(this.data.category)//轮播分组
         if(this.data.categoryGroups.length>1){
           this.setData({
@@ -225,7 +251,9 @@ Page({
   onReachBottom: function () {
 
   },
-
+  /**
+   * 用户点击右上角分享
+   */
   /**
    * 用户点击右上角分享
    */
@@ -257,19 +285,19 @@ Page({
     //const categoryId=e.currentTarget.dataset.id//获取到目标类别id
     const category=this.data.category.find(ele=>{
       return ele.id=e.currentTarget.dataset.id
-    })
-    wx.setStorage({
-      data: category.id,
-      key: 'cureenCateId',
-    })
+    })  
+   // wx.setStorageSync('currentID', e.currentTarget.dataset.id-1)
+   APP.globalData.currentcID=e.currentTarget.dataset.id+1
     wx.switchTab({
-      url: '/pages/classify/classify?categoryID',
-    })
-  },
+      url: '/pages/classify/classify'
+  })
+},
   toDetail:function(e){
+    console.log(e)
+    let goodItems=JSON.stringify(e.currentTarget.dataset.item)
     wx.navigateTo({
       //navigateTo 是可以返回的页面跳转
-      url: '/pages/detail/detail',     
+      url: '/pages/detail/detail?goodItems=' + goodItems,     
     })
    }
 

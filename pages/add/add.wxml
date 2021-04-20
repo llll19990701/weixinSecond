@@ -1,4 +1,36 @@
 <!--pages/add/add.wxml-->
 <view class="add-container">
+<view class="notice">
+  <view class="title">公告</view>  
+  <view class="title-sub">发布说明</view>
+  <view class="content">
+    <view class="detail">1、每个用户可以发布自己的闲置物品转让信息、感兴趣的话题、求购信息;</view>
+    <view  class="detail">2、每个用户发布的商品与求购信息，默认保持30天;30天后，商品下架，求购信息删除;</view>
+    <view  class="detail"> 3、不允许发布广告商品或信息;</view>
+    <view  class="detail">4、发布商品图片必须为实物图片，不得发布网络图片;</view>
+    <view  class="detail">5、商品列表、求购信息以发布时间排序;
+      <view class="detail"></view>6、全部话题，展示所有帖子;热门话题展示，有热门标识的帖子;都以时间排序</view>   
+
+  </view>
+  <view class="title-sub">注意事项</view>
+  <view class="content">
+    <view class="detail">
+    1、任何用户不得发布黄色淫秽商品、网站，一经举报发现。将封禁该用户发布商品的功能
+  </view></view>
   
+</view>
+<view class="pages">
+   <view class="transfer" bindtap="toQiuGou">
+   <image class="transfer-img" src="/images/yly_qiugou.png"></image>
+   <view class="text">求购</view>
+   </view>
+   <!-- <view class="transfer">
+   <image class="transfer-img"></image>
+   <view class="text"></view>
+   </view> -->
+   <view class="transfer" bindtap="toFabu">
+   <image class="transfer-img" src="/images/guangxianzhimdpi.png"></image>
+   <view class="text">闲置转让</view>
+   </view>
+</view>
 </view>

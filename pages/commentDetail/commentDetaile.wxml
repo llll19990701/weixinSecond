@@ -1,0 +1,4 @@
+<!--pages/commentDetail/commentDetaile.wxml-->
+<view class="top">
+  <comment isdetail="true"></comment>
+</view>

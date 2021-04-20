@@ -4,22 +4,23 @@
   <view class="good-detail-box">
      <view class="image-box">
        <swiper class="image-swiper" autoplay circular>
-         <swiper-item class="swiperItem" wx:for="{{goodDetail.image}}" >
-           <image class="image" src="{{item}}"></image>
+         <swiper-item class="swiperItem" wx:for="{{goodImg}}" >
+           <image class="image" src="{{imageUrl+item}}"></image>
          </swiper-item>
        </swiper>
      </view>
      <view class="price-detail">
-       <view class="price-now">¥ {{goodDetail.nowPrice}}</view>
-       <view class="price-origin">¥ {{goodDetail.originPrice}}</view>
+       <view class="price-now">¥ {{goodDetail.goodsprice}}</view>
+       <view class="price-origin">¥ {{goodDetail.originalprice}}</view>
      </view>
      <view class="title-container">
-        <view class="detail-title">{{goodDetail.title}}</view>
-        <view class="detail-publish">于{{morejs.timelog(goodDetail.create)}}发布</view>
+        <view class="detail-title">{{goodDetail.goodsname}}</view>
+        <view class="detail-publish">于{{morejs.timelog(goodDetail.issuedate)}}发布</view>
      </view>
   </view>
+  <view class="detail-qulity" >发布者：{{publisher}}</view>  
    <view class="detail-qulity" wx:if="{{goodDetail.quality}}">品质：{{goodDetail.quality}}</view>   
-   <view class="detail-description" wx:if="false"><text class="detail-text">商品描述:\n{{goodDetail.description}}</text></view>
+   <view class="detail-description" wx:if="false"><text class="detail-text">商品描述:\n{{goodDetail.goodsdesc}}</text></view>
 
    <view class="detail-bottom">
      <view class="toHome">

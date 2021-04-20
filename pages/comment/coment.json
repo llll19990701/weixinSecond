@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "求购广场",
+  "usingComponents": {
+    
+    "comment":"../../components/comment/comment"
+  }
+}

@@ -1,46 +1,65 @@
 {
-  "pages":[
-    "pages/home/home",
+  "pages": ["pages/commentDetail/commentDetaile", "pages/comment/coment",
+     
+    "pages/home/home","pages/index/index",
+      "pages/my/buy/buy", 
+     "pages/my/publish/publish",
+     "pages/qgCenter/qgCenter",
+    "pages/qiuGou/qiuGou",
+    "pages/message/message",
+   
+    "pages/classify/classify",
+    "pages/detail/detail",
+    "pages/publish/publish",
     "pages/my/my",
     "pages/add/add",
-    "pages/classify/classify",
-    "pages/index/index", 
-      "pages/login/login",
-    "pages/detail/detail"
+    "pages/search/search",
+    "pages/goodsList/goodsList",
+ 
+    "pages/messageDetail/messageDetail",
+    "pages/login/login",
+ 
+    "pages/my/collection/collection",
+  
+    "pages/my/about/about"
+   
+  
   ],
-  "window":{
-    "backgroundTextStyle":"dark",
-    "navigationBarBackgroundColor": "#fff",
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#4EEE94",
     "navigationBarTitleText": "Weixin",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
-   "color": "#cdcdcd",
-   "selectedColor": "#22385d",
-    "list": [{
-      "pagePath": "pages/home/home",
-      "text":"首页" ,
-      "iconPath": "images/home.png",
-      "selectedIconPath": "images/home_active.png"
-    },
-    {
-      "pagePath": "pages/classify/classify",
-      "text": "分类",
-      "iconPath": "images/classify.png",
-      "selectedIconPath": "images/classify_active.png"
-    },
-    {
-      "pagePath": "pages/add/add",
-      "text": "发布",
-      "iconPath": "images/publish.png",
-      "selectedIconPath": "images/publish_active.png"
-    },
-    {
-      "pagePath": "pages/index/index",
-      "text": "我的",
-      "iconPath": "images/me.png",
-      "selectedIconPath": "images/me_active.png"
-    }]
+    "color": "#cdcdcd",
+    "selectedColor": "#22385d",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home_active.png"
+      },
+      {
+        "pagePath": "pages/classify/classify",
+        "text": "分类",
+        "iconPath": "images/classify.png",
+        "selectedIconPath": "images/classify_active.png"
+      },
+      {
+        "pagePath": "pages/add/add",
+        "text": "发布",
+        "iconPath": "images/publish.png",
+        "selectedIconPath": "images/publish_active.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "images/me.png",
+        "selectedIconPath": "images/me_active.png"
+      }
+    ]
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

@@ -10,6 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "@vant/weapp": "^1.6.8",
+    "cos-wx-sdk-v5": "^1.0.6",
+    "miniprogram-computed": "^4.0.3",
     "vant-weapp": "^0.5.29"
   }
 }

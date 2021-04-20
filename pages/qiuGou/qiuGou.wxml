@@ -1,0 +1,21 @@
+<view class="container">
+  <form bindsubmit="formSubmit">
+    <van-cell-group>
+
+      <van-field name="desc"  clearable  required input-class="des_input" value="" type="textarea" label="内容描述:" placeholder="请输入你的具体要求"  />
+    </van-cell-group>
+    <view class="imglist">
+      <view class="tips">最多可上传3张图片</view>  
+      <view class="ver-code-bottom-one-right-code">
+      <view class="posting-uploader-item" wx:for="{{fileList}}"  >
+        <image src="{{item}}"  alt="图片" class="imgPreview" bindtap="previewImg" data-url="{{item}}"  />
+        <van-icon name="close" class="delte" bindtap="deleteImage" data-index="{{index}}" data-url="{{item}}"/>
+      </view>
+      <image class="addImage" bindtap="uploadImgFile" src="/images/add-photo.png" wx:if="{{fileList.length!==9}}"></image>
+      </view>
+     
+    </view>
+    <button class="btn_submit" type="primary" formType="submit">去求购</button>
+  </form>
+  <view class="zhanwei"></view>
+</view>

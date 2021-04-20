@@ -1,0 +1,18 @@
+<view class="container">
+  <view class="search">
+    <van-search value="{{ value }}" focus="{{true}}" shape="round" input-align="center" bind:change="onChange" bind:search="onSearch" placeholder="请输入搜索关键词" />
+  </view>
+  <view class='historyBox'>
+    <view class='history'>
+      <view class='options'>
+        <text>历史搜索记录</text>
+        <image src="/images/shanchu1.png" bindtap='del'></image>
+      </view>
+      <view class='options'>
+        <!-- 遍历 history 数组 -->
+        <text class='item' data-val="{{item}}" wx:for='{{historyList}}' wx:key='key' bindtap="goSearch">{{item}}</text>
+        <view style="color: #999;text-align: center;" wx:if="{{historyList.length==0}}">暂无历史搜索记录</view>
+      </view>
+    </view>
+  </view>
+</view>

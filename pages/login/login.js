@@ -24,7 +24,8 @@ Page({
               console.log(res,"ressss")
               wx.setStorageSync('nickName',res.userInfo.nickName )
               wx.setStorageSync('avatarUrl', res.userInfo.avatarUrl)  
-              that.doLogin()           
+              that.doLogin()
+                         
             },
             fail: res => {
                //拒绝授权
@@ -59,6 +60,7 @@ Page({
      
     }
   },
+  
   doLogin:function(){
     console.log(app.globalData.apiConfig.login_url,"url")
     wx.login({
@@ -77,6 +79,7 @@ Page({
           success(re){
             console.log("............................")
             wx.setStorageSync('userId', re.data.userid)
+            wx.setStorageSync(("openid", re.data.openid))
            if(re.data.msg){
              //用户未注册 进行注册
              console.log(wx.getStorageSync('nickName'),)
@@ -90,12 +93,13 @@ Page({
                  "avatarUrl":wx.getStorageSync('avatarUrl'),
                },   
                header: {
-                // 'content-type': 'application/json'
+                 //'content-type': 'application/json'
                 'content-type': 'application/x-www-form-urlencoded'
               },
                method:'POST',
                success(ress){  
                  console.log(ress,"ress")
+                 app.
                  wx.reLaunch({ //成功之后进入首页
                    url: '/pages/home/home',
                  })                

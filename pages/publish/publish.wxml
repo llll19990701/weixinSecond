@@ -1,0 +1,30 @@
+<view class="container">
+  <form bindsubmit="formSubmit">
+    <van-cell-group>
+      <van-field name="title" center required clearable label="标题:" value="" placeholder="给物品取个名字吧" confirm-type="next" />
+      <van-field name="category"  required readonly center label="分类:" value="{{array[category]}}" placeholder="请选择分类" border="{{ true }}" >
+        <picker slot="button" bindchange="bindPickerChange" value="{{category}}" range="{{array}}">
+          <button class="btn" size="mini" ><image src="/images/xiala.png"></image></button>
+        </picker>
+      </van-field>
+      <van-field name="nowPrice" right-icon="gold-coin-o" type="digit" center required label="二手价:" value="" placeholder="开个价" confirm-type="next" />
+      <van-field name="price" right-icon="gold-coin-o" type="digit" center required label="原价:" value="" placeholder="原价" confirm-type="next" />
+      <van-field name="qua" center clearable type="number" label="品质:" value="" placeholder="如：九成新、五天前购买" confirm-type="next" />
+      <van-field name="desc"  clearable input-class="des_input" value="" type="textarea" label="商品描述:" placeholder="详细介绍一下" autosize />
+    </van-cell-group>
+    <view class="imglist">
+      <view class="tips">最多可上传9张图片</view>  
+      <view class="ver-code-bottom-one-right-code">
+      <view class="posting-uploader-item" wx:for="{{fileList}}"  >
+        <image src="{{item}}"  alt="图片" class="imgPreview" bindtap="previewImg" data-url="{{item}}"  />
+        <van-icon name="close" class="delte" bindtap="deleteImage" data-index="{{index}}" data-url="{{item}}"/>
+      </view>
+      <image class="addImage" bindtap="uploadImgFile" src="/images/add-photo.png" wx:if="{{fileList.length!==9}}"></image>
+      <!-- <van-uploader  accept="image" max-count="9" bind:after-read="uploadImg"  bind:click-preview="previewImg" preview-full-image="{{true}}" multiple="{{true}}" /> -->
+      </view>
+     
+    </view>
+    <button class="btn_submit" type="primary" formType="submit">发布</button>
+  </form>
+  <view class="zhanwei"></view>
+</view>

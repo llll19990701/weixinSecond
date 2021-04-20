@@ -1,12 +1,12 @@
 <!--components/goodItem/goodItem.wxml-->
 <view class="good-box">
     <view class="image-box">
-       <image src="{{recommenedItem.imageUrl}}" class="good-image"></image>
+       <image src="{{imageUrl+imgUrl}}" class="good-image" lazy-load></image>
      </view>
-     <view class="good-title">{{recommenedItem.title}}</view>
+     <view class="good-title">{{recommenedItem.goodsname}}</view>
       <view class="goods-price-container">
-       <view class="good-price">¥ {{recommenedItem.nowPrice}}</view>
-       <view class="good-price2">¥ {{recommenedItem.originPrice}}</view>
+       <view class="good-price">¥ {{recommenedItem.goodsprice}}</view>
+       <view class="good-price2">¥ {{recommenedItem.originalprice}}</view>
      </view>
 </view>
     

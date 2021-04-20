@@ -2,17 +2,17 @@
 <wxs src="../../common.wxs" module="morejs" />
 <view class="goods-containers">
    <view class="goods-image">
-     <image class="goods-img" src="{{GoodList.image}}"></image>
+     <image class="goods-img" src="{{imageUrl+morejs.image(GoodList.goodsimg)}}"></image>
    </view>
    <view class="good-info">
      <view class="good-infos">
-        <view class="good-title">{{GoodList.title}}</view>
-         <view class="good-owner">{{GoodList.publisher}}</view>
+        <view class="good-title">{{GoodList.goodsname}}</view>
+         <!-- <view class="good-owner">{{GoodList.publisher}}</view> -->
      </view>
-   
+  
     <view class="good-between">
-       <view class="good-price">¥ {{GoodList.nowPrice}}</view>
-       <view class="good-publishTime">于{{morejs.timelog(GoodList.create)}}发布</view>
+       <view class="good-price">¥ {{GoodList.goodsprice}}</view>
+       <view class="good-publishTime">于{{morejs.timelog(GoodList.issuedate)}}发布</view>
     </view>
    
    </view>

@@ -1,0 +1,5 @@
+/* pages/commentDetail/commentDetaile.wxss */
+.top{
+  width: 95%;
+  margin:0 auto
+}

@@ -37,6 +37,8 @@ App({
   
   globalData: {
     apiConfig:apiConfig,
-    userInfo: null
+    userInfo: null,
+    COS_Bucket:'shctps-1304936287',
+    COS_Region:'ap-chengdu',
   }
 })
