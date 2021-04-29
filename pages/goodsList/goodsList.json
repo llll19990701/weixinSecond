@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "物品列表",
+  "enablePullDownRefresh": true,
   "usingComponents": {
     "van-search": "/miniprogram_npm/vant-weapp/search",
     "van-dropdown-menu": "/miniprogram_npm/@vant/weapp/dropdown-menu",

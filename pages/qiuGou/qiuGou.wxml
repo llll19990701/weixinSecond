@@ -11,7 +11,7 @@
         <image src="{{item}}"  alt="图片" class="imgPreview" bindtap="previewImg" data-url="{{item}}"  />
         <van-icon name="close" class="delte" bindtap="deleteImage" data-index="{{index}}" data-url="{{item}}"/>
       </view>
-      <image class="addImage" bindtap="uploadImgFile" src="/images/add-photo.png" wx:if="{{fileList.length!==9}}"></image>
+      <image class="addImage" bindtap="uploadImgFile" src="/images/add-photo.png" wx:if="{{fileList.length<3}}"></image>
       </view>
      
     </view>

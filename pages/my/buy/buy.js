@@ -1,5 +1,6 @@
 // pages/my/buy/buy.js
 // pages/my/publish/publish.js
+const APP=getApp()
 Page({
 
   /**A
@@ -8,8 +9,7 @@ Page({
   data: {
     tabs:[
       {id:0,status:"交易中"},
-      {id:1,status:"交易完成"},
-   
+      {id:1,status:"交易结束"},     
       ],
       publishList:[
         {id:1,imgSrc:"/images/category/jiaocai_1.png",time:1618803820858,title:"测试商品",price:15,status:0},
@@ -18,7 +18,9 @@ Page({
         {id:3,imgSrc:"/images/category/jiaocai_1.png",time:1618803820858,title:"测试商品",price:15,status:3}
       ],//发布的商品列表
       tabid:0,//当前点击的tab
-      status:3
+      status:3,
+      imageUrl:APP.globalData.apiConfig.uploadImag_url,
+      buyGoods:[]
   },
     /**
    * 点击切换TAB
@@ -28,20 +30,40 @@ Page({
     this.setData({
       tabid:e.currentTarget.dataset.id
   })
+  let state=this.data.tabid
+    this.checkGoods(state)
    // his.getPublish()
 },
-
-
+/*
+ 根据state筛选商品
+*/
+ checkGoods:function(state){
+      // if(state!==0&&state!==2)
+      // return
+      let Goods=this.data.buyGoods
+     let checkedGood= Goods.filter((item)=>{
+        if(state==1){
+          return item.state==1||item.state==2
+        }
+        else{
+          return item.state==state
+        }
+      })
+      this.setData({
+        checkedGood:checkedGood
+      })
+    
+ },
 /**
-   * 获取发布物品
+   * 获取购买物品
    */
   getPublish:function(){
     let that=this
-   
+    let userid=wx.getStorageSync('userId')
        wx.request({
-         url: 'url',//获取发布商品的接口
-         data:{
-           "status":that.data.tabid
+         url:  APP.globalData.apiConfig.getBuy_url, //获取购买商品的接口
+         data:{         
+           "userId":userid
          },
          method:'GET',
          header: {
@@ -49,10 +71,14 @@ Page({
          //'content-type': 'application/x-www-form-urlencoded'
        },
          success:(res)=>{
-           
-         }
-         
-       })
+           console.log(res.data.data,"111111111111111111111111111111111")
+          that.setData({
+            buyGoods:res.data.data
+            // status:Response.data.data.state
+            })    
+            that.checkGoods(that.data.tabid)           
+       }
+      })
   },
   /**
    * 去详情页
@@ -70,21 +96,60 @@ Page({
    */
   onLoad: function (options) {
      //加载状态
-    // this.getPublish()
+     this.getPublish()
+     //this.checkGoods(this.data.tabid)
   },
 
  /**
    * 删除发布
    */
- deletePublish:function(){
-   
+  delete:function(){
+  console.log(e,"del")
+  let item=e.currentTarget.dataset.ord
+  console.log(item.goods.gid,"itemgid")
+  console.log(item.oid,"itemgid2")
+  wx.request({
+    url:APP.globalData.apiConfig.cancel_url,//取消订单
+    data:{
+      "gid":item.goods.gid,
+      "oid":item.oid
+    },
+    method:'GET',
+    header: {
+     'content-type': 'application/json'
+    //'content-type': 'application/x-www-form-urlencoded'
+  },
+  success:(res)=>{
+    console.log(res,"................res")
+    this.getPublish()
+  }
+  })
  },
 
   /**
    * 取消订单 就是去改变商品的satus 改为1
    */
-  cancel:function(){
-
+  cancel:function(e){
+      console.log(e,"cancel")
+      let item=e.currentTarget.dataset.ord
+      console.log(item.goods.gid,"itemgid")
+      console.log(item.oid,"itemgid2")
+      wx.request({
+        url:APP.globalData.apiConfig.cancel_url,//取消订单
+        data:{
+          "gid":item.goods.gid,
+          "oid":item.oid
+        },
+        method:'GET',
+        header: {
+         'content-type': 'application/json'
+        //'content-type': 'application/x-www-form-urlencoded'
+      },
+      success:(res)=>{
+        console.log(res,"................res")
+        this.getPublish()
+      }
+      })
   },
    /**
    * 确认出货 就是去改变商品的satus  该为2

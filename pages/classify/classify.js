@@ -8,20 +8,10 @@ Page({
   data: {
     Categories:[
       "全部"
-      // {id:1,categoryName:"书籍教材",categoryUrl:"/images/category/jiaocai_1.png"},
-      // {id:2,categoryName:"电子教育",categoryUrl:"/images/category/dianzichanpin_1.png"},
-      // {id:3,categoryName:"服装配饰",categoryUrl:"/images/category/wode-.png"},
-      // {id:4,categoryName:"寝居必备",categoryUrl:"/images/category/shenghuoyongpin-copy.png"},
-      // {id:5,categoryName:"文化体育",categoryUrl:"/images/category/tiyu.png"},
-      // {id:6,categoryName:"其他",categoryUrl:"/images/category/qita.png"},
-      // {id:7,categoryName:"文化体育",categoryUrl:"/images/category/tiyu.png"},
-      // {id:8,categoryName:"其他",categoryUrl:"/images/category/qita.png"},
-      // {id:9,categoryName:"文化体育",categoryUrl:"/images/category/tiyu.png"},
-      // {id:10,categoryName:"其他",categoryUrl:"/images/category/qita.png"},
     ],
     goodslist:[],
     activeCategory:0,//与Categories索引一致
-    skip:0
+    skip:1
   },
 
   categoryChange:function(e){
@@ -91,14 +81,17 @@ Page({
    */
    //获取商品列表
   // type: add  set
-  getGoods: function(type = 'set') {
+  getGoods: function(type) {
     wx.showLoading({
       title: '加载中',
     })
     let that=this
     let skip = this.data.skip
     if (type == 'set') {
-      skip = 0
+      skip = 1
+    }
+    if (type == 'add') {
+      skip = skip+1
     }
     wx.request({
       url: APP.globalData.apiConfig.classify_url,
@@ -113,17 +106,17 @@ Page({
      },
       success:res=>{
         console.log(res,"resss88888888888888888888888")
-        if(type!=='set'){//如果是重新请求，就重新赋值goodList
+        if(type=='add'){//如果是重新请求，就重新赋值goodList
           let old_data = this.data.goodslist
           let new_data = res.data.data
           this.setData({
             goodslist: old_data.concat(new_data),
-            skip: skip + res.data.data.length
+            skip: skip
           })
         }else {
           this.setData({
             goodslist: [].concat(res.data.data),            
-            skip: skip + res.data.data.length
+            skip:1 
           })
         }       
         wx.hideLoading()
@@ -150,12 +143,7 @@ Page({
       }
     })
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
+ 
 
   /**
    * 生命周期函数--监听页面显示
@@ -171,19 +159,8 @@ Page({
     console.log(this.data.activeCategory,"...................")
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
+ 
+ 
 
    /**
    * 页面相关事件处理函数--监听用户下拉动作

@@ -1,4 +1,136 @@
 <!--pages/commentDetail/commentDetaile.wxml-->
-<view class="top">
-  <comment isdetail="true"></comment>
+<wxs src="../../common.wxs" module="tools"></wxs>
+
+<scroll-view class="commentsList" >
+   <view class="top">
+  <comment isdetail="true" CommentList="{{CommentItems}}" :isdetail="{{isdetail}}" ></comment>
+   </view>
+  <block wx:for="{{comments}}">
+  <view class="commentItem" bindtap="toReply"  bindtouchstart="handleTouchStart"      bindtouchend="handleTouchEnd" 
+   bindlongpress="handleLongPress"
+   data-user="{{item.user}}"
+   >
+    <view class="left">
+      <image src="{{item.user.img}}"></image>
+    </view>
+    <view class="right">
+      <view class="right-top">
+        <view class="name">{{item.user.nickname}}</view>
+        <view class="time">{{tools.format(item.reviewtime)}}</view>
+      </view>
+      <view class="right-bottom">
+        <view wx:if="{{item.viewobject==1}}" class="replyTo" >
+          <text class="to"> 回复</text>
+          <text class="replyee">{{item.objectname}} :</text>
+        </view>
+        <view class="replyContent"> {{item.reviewcontent}}</view>
+      </view> 
+    </view>
+  </view>
+</block>
+<!-- <block>
+  <view class="commentItem">
+    <view class="left">
+      <image src="../../images/weixin (2).png"></image>
+    </view>
+    <view class="right">
+      <view class="right-top">
+        <view class="name">木子</view>
+        <view class="time">{{tools.format(1618909370535)}}</view>
+      </view>
+      <view class="right-bottom">
+        <view wx:if="{{!isreplayTo}}" class="replyTo" >
+          <text class="to"> 回复</text>
+          <text class="replyee">july : </text>
+        </view>
+        <view class="replyContent"> 没你的事v阿飞</view>
+      </view> 
+    </view>
+  </view>
+</block>
+<block>
+  <view class="commentItem">
+    <view class="left">
+      <image src="../../images/weixin (2).png"></image>
+    </view>
+    <view class="right">
+      <view class="right-top">
+        <view class="name">木子</view>
+        <view class="time">{{tools.format(1618909370535)}}</view>
+      </view>
+      <view class="right-bottom">
+        <view wx:if="{{!isreplayTo}}" class="replyTo" >
+          <text class="to"> 回复</text>
+          <text class="replyee">july : </text>
+        </view>
+        <view class="replyContent"> 没你的事v阿飞</view>
+      </view> 
+    </view>
+  </view>
+</block>
+<block>
+  <view class="commentItem">
+    <view class="left">
+      <image src="../../images/weixin (2).png"></image>
+    </view>
+    <view class="right">
+      <view class="right-top">
+        <view class="name">木子</view>
+        <view class="time">{{tools.format(1618909370535)}}</view>
+      </view>
+      <view class="right-bottom">
+        <view wx:if="{{!isreplayTo}}" class="replyTo" >
+          <text class="to"> 回复</text>
+          <text class="replyee">july : </text>
+        </view>
+        <view class="replyContent"> 没你的事v阿飞</view>
+      </view> 
+    </view>
+  </view>
+</block>
+<block>
+  <view class="commentItem">
+    <view class="left">
+      <image src="../../images/weixin (2).png"></image>
+    </view>
+    <view class="right">
+      <view class="right-top">
+        <view class="name">木子</view>
+        <view class="time">{{tools.format(1618909370535)}}</view>
+      </view>
+      <view class="right-bottom">
+        <view wx:if="{{!isreplayTo}}" class="replyTo" >
+          <text class="to"> 回复</text>
+          <text class="replyee">july : </text>
+        </view>
+        <view class="replyContent"> 没你的事v阿飞</view>
+      </view> 
+    </view>
+  </view>
+</block>
+<block>
+  <view class="commentItem">
+    <view class="left">
+      <image src="../../images/weixin (2).png"></image>
+    </view>
+    <view class="right">
+      <view class="right-top">
+        <view class="name">木子</view>
+        <view class="time">{{tools.format(1618909370535)}}</view>
+      </view>
+      <view class="right-bottom">
+        <view wx:if="{{!isreplayTo}}" class="replyTo" >
+          <text class="to"> 回复</text>
+          <text class="replyee">july : </text>
+        </view>
+        <view class="replyContent"> 没你的事v阿飞</view>
+      </view> 
+    </view>
+  </view>
+</block>  -->
+</scroll-view>
+<view class="comment-bottom" style="position:fixed; bottom:0; width:100%;  background-color:#eee">
+  <textarea class="input" auto-height focus="{{focus}}" style="{{focus? 'margin-bottom:50rpx;':''}}"  bindfocus="bindfocus" bindblur="bindblur" placeholder="{{placeHolder? placeHolder:'发送评论'}}" bindinput="bindinput" value="{{commentVal}}"></textarea>
+  <view class="btn" style="{{focus? 'margin-bottom:50rpx;':''}} " bindtap="send" >发送</view>
 </view>
+

@@ -99,7 +99,7 @@ Page({
                method:'POST',
                success(ress){  
                  console.log(ress,"ress")
-                 app.
+                 
                  wx.reLaunch({ //成功之后进入首页
                    url: '/pages/home/home',
                  })                

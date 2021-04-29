@@ -1,13 +1,17 @@
 {
-  "pages": ["pages/commentDetail/commentDetaile", "pages/comment/coment",
-     
-    "pages/home/home","pages/index/index",
-      "pages/my/buy/buy", 
-     "pages/my/publish/publish",
-     "pages/qgCenter/qgCenter",
+  "pages": [
+    "pages/home/home",
+    "pages/my/kefu/kefu",
+    "pages/latestNotice/latestNotice",
+    "pages/feedBack/feedBack",
+    "pages/userInfo/userInfo",
+    "pages/comment/coment",
+    "pages/commentDetail/commentDetaile",
+    "pages/index/index",
+    "pages/my/buy/buy",
+    "pages/my/publish/publish",
     "pages/qiuGou/qiuGou",
     "pages/message/message",
-   
     "pages/classify/classify",
     "pages/detail/detail",
     "pages/publish/publish",
@@ -15,15 +19,11 @@
     "pages/add/add",
     "pages/search/search",
     "pages/goodsList/goodsList",
- 
     "pages/messageDetail/messageDetail",
     "pages/login/login",
- 
     "pages/my/collection/collection",
-  
-    "pages/my/about/about"
-   
-  
+    "pages/my/about/about",
+    "pages/my/news/news"
   ],
   "window": {
     "backgroundTextStyle": "dark",

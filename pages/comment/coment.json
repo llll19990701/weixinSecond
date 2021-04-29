@@ -1,7 +1,7 @@
 {
   "navigationBarTitleText": "求购广场",
   "usingComponents": {
-    
+     "van-divider":"../../miniprogram_npm/@vant/weapp/divider/index",
     "comment":"../../components/comment/comment"
   }
 }

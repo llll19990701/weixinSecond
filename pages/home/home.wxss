@@ -18,7 +18,9 @@ view {
   padding-left: 26rpx;
   background-color: white;
   border:1px solid gainsboro;
-  border-radius: 60rpx;
+  border-radius: 60rpx; 
+  display: flex;
+  justify-content: space-between;
 }
 
 .search input {

@@ -3,18 +3,18 @@
     <view class="{{isdetail? 'commentDetail':'comment-item' }}">
      <view class="top">
        <view class="profile">
-         <image src="../../images/weixin (2).png"></image>
+         <image src="{{CommentList.user.img}}"></image>
        </view>
        <view class="info">
-         <view class="nikName">july</view>
-         <view class="time">{{tools.format(161888876960)}}</view>
+         <view class="nikName">{{CommentList.user.nickname}}</view>
+         <view class="time">{{tools.format(CommentList.posttime)}}</view>
        </view>
      </view>
      <view class="center">
-       <view class="text">c测试数据，测试数据c测试数据，测试数据c测试数据，测试数据c测试数据，测试数据</view>
+       <view class="text">{{CommentList.postcontent}}</view>
        <view class="image-content" >
           <view class="images"wx:for="{{image}}" wx:key="{{index}}">
-           <image  class="images{{image.length}}" src="{{item}}" ></image>
+           <image  class="images{{image.length}}" src="{{imageUrl+item}}" ></image>
          </view>
        </view>
      </view>
@@ -22,9 +22,11 @@
      <view class="bottom">
        <view class="view">
          <image src="../../images/yikan.png"></image>
-         <view class="viewText">110</view>
+         <view class="viewText">{{CommentList.views}}</view>
        </view>
-     <image src="../../images/pinglun.png"></image>
+       <view class="comment"><image src="../../images/pinglun.png"></image>
+     <view class="commentext" wx:if="{{isdetail}}">{{CommentList.num}}</view></view>
+     
      </view>
     </view>
    </block>

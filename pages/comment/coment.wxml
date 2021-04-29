@@ -5,9 +5,9 @@
       求购信息
    </van-divider>
 </view>
-
+<!-- wx:for="" comentItem="{{item}}" -->
  <view class="comment-content">
-   <comment  :isdetail="false" ></comment>
+   <comment  :isdetail="false"  bindtap="toCommentDetail" wx:for="{{commentList}}" CommentList="{{item}}"  data-item="{{item}}" ></comment>
   <!-- <block >
     <view class="comment-item">
      <view class="top">

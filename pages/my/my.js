@@ -35,6 +35,11 @@ Page({
                   url: e.currentTarget.dataset.go
             })
       },
+      toUserInfo:function(){
+        wx.navigateTo({
+          url: 'pages/userInfo/userInfo',
+        })
+      },
       //展示分享弹窗
       showShare() {
             this.setData({
@@ -59,6 +64,5 @@ Page({
                   imageUrl: JSON.parse(config.data).share_img,
                   path: '/pages/start/start'
             }
-
       },
 })

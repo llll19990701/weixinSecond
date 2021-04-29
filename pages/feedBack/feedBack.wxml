@@ -1,0 +1,27 @@
+<view class="container">
+  <form bindsubmit="formSubmit">
+    <van-cell-group>
+      <!-- <van-field name="title" center required clearable label="反馈问题:" value="" placeholder="标题" confirm-type="next" /> -->
+    
+         <van-field name="desc"  clearable   input-class="des_input" value=""   maxlength='200' type="textarea"  placeholder="请输入10个字以上的问题描述以便我们提供更好的帮助"  bind:input="onInput"  >
+        
+      </van-field>
+      <view class="fontnum">{{t_length}}/200</view>
+     
+     
+    </van-cell-group>
+    <view class="imglist">
+      <view class="tips">截图({{fileList.length}}/4)</view>  
+      <view class="ver-code-bottom-one-right-code">
+      <view class="posting-uploader-item" wx:for="{{fileList}}"  >
+        <image src="{{item}}"  alt="图片" class="imgPreview" bindtap="previewImg" data-url="{{item}}"  />
+        <van-icon name="close" class="delte" bindtap="deleteImage" data-index="{{index}}" data-url="{{item}}"/>
+      </view>
+      <image class="addImage" bindtap="uploadImgFile" src="/images/add-photo.png" ></image>
+      </view>
+     
+    </view>
+    <button class="btn_submit" type="primary" plain formType="submit">提交</button>
+  </form>
+  <view class="zhanwei"></view>
+</view>

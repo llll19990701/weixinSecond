@@ -1,0 +1,21 @@
+/* pages/my/news/news.wxss */
+.new-container{
+width: 80%;
+display: flex;
+}
+.new-container image{
+  width:80rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  margin-top: 20rpx;
+}
+.replay{
+  padding: 15rpx 15rpx 15rpx 15rpx;
+  font-size:30rpx;
+  max-width: 500rpx;
+  white-space:pre-wrap;
+  word-break:break-all;
+  border-radius: 30rpx;
+  box-shadow: 0px 0px 18px 0px rgba(5, 5, 5, 0.15);
+  margin-top: 20rpx;
+}

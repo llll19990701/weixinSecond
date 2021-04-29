@@ -99,6 +99,9 @@ Page({
     if (type == 'set') {
       skip = 0
     }
+    if (type == 'add') {
+      skip = 1
+    }
     data.skip = skip
     data.orderby = this.data.value2//排序方式
     wx.request({
@@ -121,13 +124,13 @@ Page({
           let new_data = res.data.data
           this.setData({
             goodslist: old_data.concat(new_data),
-            skip: skip + res.data.data.length
+            skip: skip 
           })
         }else {
           this.setData({
             goodslist: res.data.data,
             
-            skip: skip + res.data.data.length
+            skip: 1
           })
         }       
         wx.hideLoading()

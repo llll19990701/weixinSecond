@@ -1,2 +1,33 @@
-<!--pages/my/collection/collection.wxml-->
-<text>pages/my/collection/collection.wxml</text>
+<wxs src="../../../common.wxs" module="tools"></wxs>
+ 
+ <view class="publish">
+
+<!-- wx:if="{{publishList.lenght==0}}" -->
+<view class="publish-container"  wx:if="{{collections.lenght!==0}}">
+     <block class="publish-item" wx:for="{{collections}}"> 
+       <view  class="publish-item" bindtap="toDetail" data-item="{{item}}"   > 
+          <view class="top">
+            <image src="/images/ziyuan.png"></image>
+            <view class="status" wx:if="{{item.state==0}}"></view>
+            <view class="status" wx:if="{{item.state==1}}">已收藏</view>
+            <view class="status" wx:if="{{item.state==2||item.state==3||item.state==4||item.state==0||item.state==5}}">已下架</view>
+            <view class="timer">{{tools.formaDAY(item.issuedate)}}</view>
+           </view>
+          <view class="center">
+            <image class="publish-image" src="{{imageUrl+tools.image(item.goodsimg)}}"></image>
+            <view class="publish-detail">
+              <view class="publish-title">{{item.goodsname}}</view>
+              <view class="publish-price">￥ {{item.goodsprice}}</view>
+            </view>
+          </view>
+          <view class="bottom">                                      
+                          <view wx:if="{{item.state==1||item.state==2}}" class="cancel delete" catchtap="cancel" data-ord="{{item}}">取消收藏</view>                        
+          </view>
+       </view>
+     </block>
+</view>
+<view class="nocontent" wx:if="{{checkedGood.length==0}}">
+      <image src="/images/nodata.png"></image>
+      <view class="blank_text">这里空空如也~</view>
+</view>
+ </view>

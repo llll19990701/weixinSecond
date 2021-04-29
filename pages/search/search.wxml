@@ -6,7 +6,7 @@
     <view class='history'>
       <view class='options'>
         <text>历史搜索记录</text>
-        <image src="/images/shanchu1.png" bindtap='del'></image>
+        <image src="/images/shanchu.png" bindtap='del'></image>
       </view>
       <view class='options'>
         <!-- 遍历 history 数组 -->

@@ -1,0 +1,29 @@
+<view class='me'>
+  <view class='meTop'>
+      <view class="meTopuserInfo">
+        <view class='meTopuserIcon'>
+          <image src="{{userInfo.img}}"/>
+        </view>
+        <view class='meTopuserName'>
+          <text>{{userInfo.nickname}}</text>
+        </view>
+      </view>
+  </view>
+   <view class='under'>
+  <form bindsubmit="formSubmit" bindreset="formReset">
+  <view class="weui-cell">
+          <text class="weui-cell__bd">昵称：</text> 
+          <input name="nickname" placeholder="龙傲天"  value="{{userInfo.nickname}}" />   
+  </view>
+  <view class="weui-cell">
+          <text class="weui-cell__bd">手机号：</text>  
+          <input name="phone" placeholder="请输入手机号"  value="{{userInfo.contact? userInfo.contact:''}}" />  
+  </view>
+  <view class="btn-area">
+    <button class="tj" formType="submit" >提交</button>
+    <button formType="reset" class="reset">重置</button>
+  </view>
+</form>
+</view>
+</view>
+

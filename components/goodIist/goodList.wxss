@@ -14,10 +14,13 @@ view{
 .goods-image{
 width: 100px;
 height: 100px;
+display: flex;
+justify-items: center;
+align-items: center;
 }
 .goods-img{
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
 }
 .good-info{
   width: 200px;

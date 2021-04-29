@@ -9,6 +9,7 @@
             <view wx:if="{{!userinfo}}" class="top_1_1" bindtap="go" data-go="/pages/login/login">点击登录</view>
             <view wx:if="{{userinfo}}" class="top_1_1">
                   <open-data type="userNickName"></open-data>
+                  <text class="update" bindtap="go" data-go="/pages/userInfo/userInfo">点击修改</text>
             </view>
             <view class="top_1_2" wx:if="{{!userinfo}}">一秒登录，体验所有功能</view>
              <!-- <view class="top_1_2" wx:if="{{userinfo}}" bindtap="go" data-go="/pages/edit/edit" data-status="1">点击修改资料</view> -->
@@ -25,28 +26,35 @@
             <image src="/images/goumai.png" lazy-load></image>
             <view>我的购买</view>
       </view>
-      <view class="center_1" bindtap="go" data-go="/pages/my/message/message"  >
-            <image src="/images/ziyuan.png" lazy-load></image>
-            <view>消息中心</view>
+      <view class="center_1" bindtap="go" data-go="/pages/my/collection/collection"  >
+            <image src="/images/wodeshoucang.png" lazy-load></image>
+            <view>我的收藏</view>
       </view>
 </view>
 <view class="blank"></view>
 <view class="bottom_box">
-      <view class="bottom_card" bindtap="go" data-go="/pages/my/collection/collection" data-status="1">
+      <view class="bottom_card" bindtap="go" data-go="/pages/my/news/news" data-status="1">
             <view class="bottom_1">
-                  <image src="/images/wodeshoucang.png"></image>
-                  <view>我的收藏</view>
+                  <image src="/images/xiaoxi1.png"></image>
+                  <view>我的消息</view>
             </view>
             <image src="/images/go.png"></image>
       </view>
-      <view class="bottom_card" bindtap="go" data-go="/pages/my/concat/concat" data-status="1">
+      <view class="bottom_card" bindtap="go" data-go="/pages/my/check/check" data-status="1">
+            <view class="bottom_1">
+                  <image src="/images/shenhe.png"></image>
+                  <view>商品审核</view>
+            </view>
+            <image src="/images/go.png"></image>
+      </view>
+      <view class="bottom_card" bindtap="go" data-go="/pages/my/kefu/kefu" data-status="1">
             <view class="bottom_1">
                   <image src="/images/lianxiwomen.png"></image>
                   <view>联系我们</view>
             </view>
             <image src="/images/go.png"></image>
       </view>
-      <view class="bottom_card">
+      <view class="bottom_card"   bindtap="go" data-go="/pages/feedBack/feedBack">
             <view class="bottom_1">
                   <image src="/images/wentifankui.png"></image>
                   <view>问题反馈</view>
@@ -54,7 +62,7 @@
             <image src="/images/go.png"></image>
             <button open-type="feedback"></button>
       </view>
-      <view class="bottom_card" bindtap="showShare">
+      <view class="bottom_card" bindtap="showShare" open-type="share">
             <view class="bottom_1">
                   <image src="/images/fenxiang.png"></image>
                   <view>好用分享</view>
@@ -72,7 +80,7 @@
       </view>
 </view>
 
-<!--分享弹出层-->
+<!-- 分享弹出层
 <van-popup show="{{ showShare }}" bind:close="closePop">
       <view class="share_contain">
             <view class="share_border"></view>
@@ -91,4 +99,4 @@
                   </view>
             </view>
       </view>
-</van-popup>
+</van-popup> -->

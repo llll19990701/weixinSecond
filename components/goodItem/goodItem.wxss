@@ -3,18 +3,24 @@
   width: 320rpx;
   margin-bottom: 24rpx;
   border-radius: 5px;
-  border: 1px solid #D1D1D1;
+  /* border: 1px solid #D1D1D1; */
+  box-shadow: 0px 0px 18px 0px rgba(5, 5, 5, 0.15);
   padding-bottom: 10rpx;
   margin-left: 12px;
   margin-right: 12px;
+  margin-top: 24rpx;
 }
 .image-box{
 width: 320rpx;
 height: 320rpx;
+display: flex;
+justify-items: center;
+align-items: center;
 }
 .good-image{
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 90%;
+  margin:0 auto;
 }
 .good-title{
   width: 280rpx;

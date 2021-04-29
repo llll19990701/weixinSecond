@@ -30,7 +30,7 @@ Page({
    ],
    noticeList:[
      {id:1,title:"最新发布消息此处可看，系统公告1"},
-    //  {id:2,title:"最新发布消息此处可看，系统公告2"}
+     {id:2,title:"最新发布消息此处可看，系统公告2"}
    ],
    recommenedList:[
     //  {id:1,imageUrl:"/images/pic1.png",title:'推荐测试',originPrice:30,nowPrice:15},
@@ -44,6 +44,44 @@ Page({
    scrollTop:0
 
   },
+
+    /**
+   * 点击查看公告详情
+   */
+  toNoticeDetail:function(e){
+    let item=JSON.stringify(e.currentTarget.dataset.notice)
+    wx.navigateTo({
+      url: "/pages/latestNotice/latestNotice?notice="+item,
+    })
+  },
+    /**
+   * 获取最新公告
+   */
+  getLastNotice:function(){
+     wx.request({
+       url: APP.globalData.apiConfig.notice_url,
+      method:'GET',
+      header: {
+        'content-type': 'application/json'
+       //'content-type': 'application/x-www-form-urlencoded'
+     },
+      success:(res)=>{
+        console.log(res,"notice...............")
+        this.setData({
+          notice:[].concat(res.data.data),
+          convetNotice:this.getSimpleText(res.data.data.noticecontent)
+        })
+      }
+     })
+  },
+   /**
+   * 从富文本中提取纯文字
+   */
+   getSimpleText:function(html){
+    var re1 = new RegExp("<.+?>","g");//匹配html标签的正则表达式，"g"是搜索匹配多个符合的内容
+    var msg = html.replace(re1,'');//执行替换成空字符
+    return msg;
+    },
 
   /**
    * 生命周期函数--监听页面加载
@@ -62,6 +100,7 @@ Page({
                 this.bannerList();
                 this.categoryList();
                 this.getRecommendGoodList();
+                this.getLastNotice();
       }             
     }else{
       wx.showToast({
@@ -96,7 +135,7 @@ Page({
     let  menuButtonInfo=APP.globalData.menuButtonInfo
     console.log(menuButtonInfo,"....")
     let margin=navTop-statusBarHeight
-
+ 
     // let categoryGroupLenth=this.data.category.length
     // let categoryLunHeight= categoryGroupLenth>4? 2*70:60//动态计算种类轮播高度
 
@@ -299,6 +338,11 @@ Page({
       //navigateTo 是可以返回的页面跳转
       url: '/pages/detail/detail?goodItems=' + goodItems,     
     })
+   },
+   toQiuGou:function(){
+     wx.navigateTo({
+       url: '/pages/comment/coment',
+     })
    }
 
 })

@@ -234,7 +234,10 @@ Page({
           })
       })
       console.log(that.data.array,"array")
-      
+      console.log(options,"'''''''''''''''''''''''''''")
+      if(options.item){
+        
+      }
   },
 
   /**

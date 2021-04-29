@@ -1,0 +1,16 @@
+<wxs src="../../common.wxs" module="tools"></wxs>
+<view>
+
+  <view class="top">
+     <view class="title">{{notice.noticetitle}}</view>
+     <view class="publishinfo">
+       <view class="publish">{{notice.mname}}</view>
+       <view class="time">{{tools.formaDAY(notice.noticetime)}}</view>
+     </view>
+     <view class="content">
+      <block wx:if="{{notice}}">
+          <rich-text nodes="{{notice.noticecontent}}"></rich-text>
+        </block>
+     </view>
+  </view>
+</view>

@@ -1,0 +1,9 @@
+
+<view>
+<block wx:for="newList">
+ <view class="new-container">
+   <image src="/images/kefu (1).png" ></image>
+   <view class="replay">hahhahahhahahhahahahhahahahahahahahahahhahahahahahahaha</view>
+ </view>
+</block>
+</view> 

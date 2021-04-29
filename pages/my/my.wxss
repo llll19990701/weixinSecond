@@ -19,7 +19,8 @@
 .top_1_1 {
   font-size: 42rpx;
   letter-spacing: 2rpx;
-}
+   display: flex;
+  flex-direction: column}
 
 .top_1_2 {
   font-size: 34rpx;
@@ -47,7 +48,12 @@
 .avator image {
   width: 120rpx;
   height: 120rpx;
-
+}
+.top_1_1 .update{
+    color: rgb(25, 97, 230);
+    text-decoration-line: underline;
+    margin-top: 10rpx;
+    font-size:30rpx
 }
 
 .center_box {
@@ -184,7 +190,7 @@
 }
 
 .share_button {
-  width: 100%;
+  width: 100% !important;
   height: 100%;
   opacity: 0.01;
   border: none;

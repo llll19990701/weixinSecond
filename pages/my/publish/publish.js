@@ -1,4 +1,5 @@
 // pages/my/publish/publish.js
+const app=getApp()
 Page({
 
   /**A
@@ -6,42 +7,102 @@ Page({
    */
   data: {
     tabs:[
-      {id:0,status:"待出售"},
-      {id:1,status:"交易中"},
-      {id:2,status:"已售出"},
-      {id:3,status:"已下架"}
+      {id:0,status:"交易中" ,sid:2}, 
+      {id:1,status:"待出售",sid:1},
+      {id:2,status:"已售出",sid:3},
+      {id:3,status:"已下架",sid:4},
       ],
-      publishList:[
-        {id:1,imgSrc:"/images/category/jiaocai_1.png",time:1618803820858,title:"测试商品",price:15,status:0},
-        {id:2,imgSrc:"/images/category/jiaocai_1.png",time:1618803820858,title:"测试商品",price:15,status:1}  ,
-        {id:4,imgSrc:"/images/category/jiaocai_1.png",time:1618803820858,title:"测试商品",price:15,status:2},
-        {id:3,imgSrc:"/images/category/jiaocai_1.png",time:1618803820858,title:"测试商品",price:15,status:3}
-      ],//发布的商品列表
-      tabid:0,//当前点击的tab
-      status:3
+      publishList:[],//发布的商品列表
+      tabid:2,//当前点击的tab
+      status:3,
+      imageUrl:app.globalData.apiConfig.uploadImag_url,
   },
-    /**
+  
+ /**
    * 点击切换TAB
    */
   clickTab:function(e){
-    //console.log(e,"99999999999")
+    console.log(e,"99999999999")
     this.setData({
       tabid:e.currentTarget.dataset.id
   })
-   // his.getPublish()
+  let state=this.data.tabid
+    this.checkGoods(state)
 },
+/*
+ 获取待确定的订单
+*/
+getConfirm:function(checkedGood){
+  wx.request({
+    url: app.globalData.apiConfig.getConfirm_url,
+    data:{
+      'uid':wx.getStorageSync('userId')
+    },
+    method:'GET',
+    header: {
+     'content-type': 'application/json'
+    //'content-type': 'application/x-www-form-urlencoded'
+  },
+    success:(res)=>{
+          console.log(res,"lllllllllllllll..............")
+          checkedGood=checkedGood.concat(res.data.data)
+          console.log(checkedGood,"checkedGood..............")
+          this.setData({
+           checkedGood:checkedGood
+         })        
+    }
+  })
+},
+/*
+ 根据state筛选商品
+*/
+checkGoods:function(state){
+   let checkedGood=[]
+  if(state==2){
+    //请求订单中的信息，交易中的由于取消订单要oId 所以直接从订单表拿信息
+    wx.request({
+      url: app.globalData.apiConfig.getConfirm_url,
+      data:{
+        'uid':wx.getStorageSync('userId')
+      },
+      method:'GET',
+      header: {
+       'content-type': 'application/json'
+      //'content-type': 'application/x-www-form-urlencoded'
+    },
+      success:(res)=>{
+            console.log(res,"lllllllllllllll..............")
+            checkedGood=checkedGood.concat(res.data.data)
+            console.log(checkedGood,"checkedGood..............")
+            this.setData({
+             checkedGood:checkedGood
+           })        
+      }
+    })
+  }else{
+  let Goods=this.data.publishGoods
+  checkedGood= Goods.filter((item)=>{
+      return item.state==state
+  })
+  this.setData({
+    checkedGood:checkedGood
+  })
+  }
+  console.log(checkedGood,"checkedGood2..............")
 
+},
+/*
 
 /**
    * 获取发布物品
    */
   getPublish:function(){
     let that=this
-   
+     let userid=wx.getStorageSync('userId')
        wx.request({
-         url: 'url',//获取发布商品的接口
+         url: app.globalData.apiConfig.fabuHistory_url,//获取发布商品的接口
          data:{
-           "status":that.data.tabid
+           "uid":userid
          },
          method:'GET',
          header: {
@@ -49,7 +110,12 @@ Page({
          //'content-type': 'application/x-www-form-urlencoded'
        },
          success:(res)=>{
-           
+           console.log(res,"resccccccccccccccccccc")
+           that.setData({
+            publishGoods:res.data.data
+            // status:Response.data.data.state
+            })    
+            that.checkGoods(that.data.tabid) 
          }
          
        })
@@ -70,27 +136,82 @@ Page({
    */
   onLoad: function (options) {
      //加载状态
-    // this.getPublish()
+     this.getPublish()
   },
 
  /**
-   * 删除发布
+   * SC发布 针对出售中的商品  从商品表中做删除
    */
- deletePublish:function(){
-   
+  delete:function(e){
+  console.log(e,"delete")
+  let item=e.currentTarget.dataset.ord
+  console.log(item.gid,"itemgid")
+ // console.log(item.oid,"itemgid2")
+  wx.request({
+    url:app.globalData.apiConfig.delPublish_url,//取消订单
+    data:{
+      "state":6,
+      "gid":item.gid
+    },
+    method:'GET',
+    header: {
+     'content-type': 'application/json'
+    //'content-type': 'application/x-www-form-urlencoded'
+  },
+  success:(res)=>{
+    console.log(res,"................res")
+    this.getPublish()
+  }
+  })
  },
-
   /**
    * 取消订单 就是去改变商品的satus 改为1
    */
-  cancel:function(){
-
-  },
+  cancel:function(e){
+    console.log(e,"cancel")
+    let item=e.currentTarget.dataset.ord
+    console.log(item.goods.gid,"itemgid")
+    console.log(item.oid,"itemgid2")
+    wx.request({
+      url:app.globalData.apiConfig.cancel_url,//取消订单
+      data:{
+        "oid":item.oid,
+        "gid":item.goods.gid
+      },
+      method:'GET',
+      header: {
+       'content-type': 'application/json'
+      //'content-type': 'application/x-www-form-urlencoded'
+    },
+    success:(res)=>{
+      console.log(res,"................res")
+      this.checkGoods(2)
+    }
+    })
+},
    /**
    * 确认出货 就是去改变商品的satus  该为2
    */
-  confirm:function(){
-
+  confirm:function(e){
+    let item=e.currentTarget.dataset.ord
+    console.log(item,"item........................")
+    let userId=wx.getStorageSync('userId')
+    wx.request({
+      url:app.globalData.apiConfig.confirm_url,//取消订单
+      data:{
+        "oid":item.oid,
+        "gid":item.goods.gid
+      },
+      method:'GET',
+      header: {
+       'content-type': 'application/json'
+      //'content-type': 'application/x-www-form-urlencoded'
+    },
+    success:(res)=>{
+      console.log(res,"................res")
+      this.checkGoods(2)
+    }
+    })
   },
    /**
    * 重新发布 就是去改变商品的satus  该为0  然后修改发布时间

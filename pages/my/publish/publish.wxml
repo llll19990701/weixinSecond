@@ -3,42 +3,70 @@
  <view class="publish">
    <view class="tab-container">
    <block class="tab" wx:for="{{tabs}}" wx:key="tab{{index}}">
-     <view class="tab-item" bindtap="clickTab" data-id="{{index}}" >
-       <view class="{{item.id==tabid? 'tab_on':''}}">{{item.status}}</view>
+     <view class="tab-item" bindtap="clickTab" data-id="{{item.sid}}" >
+       <view class="{{item.sid==tabid? 'tab_on':''}}">{{item.status}}</view>
      </view>
   </block>
 </view>
 <!-- wx:if="{{publishList.lenght==0}}" -->
-<view class="publish-container" >
-     <block class="publish-item" wx:for="{{publishList}}"> 
-       <view  class="publish-item" bindtap="toDetail"> 
+<view class="publish-container" wx:if="{{tabid==2}}">
+  <block class="publish-item"  wx:for="{{checkedGood}}">
+       <view  class="publish-item" bindtap="toDetail"   data-item="{{item.goods}}"> 
           <view class="top">
             <image src="/images/ziyuan.png"></image>
-            <view class="status" wx:if="{{tabid==0}}">待出售</view>
-            <view class="status" wx:if="{{tabid==1}}">交易中</view>
-            <view class="status" wx:if="{{tabid==2}}">已售出</view>
-            <view class="status" wx:if="{{tabid==3}}">已下架</view>
-            <view class="timer">{{tools.format(item.time)}}</view>
-        </view>
+           
+            <view class="status" >交易中</view>
+           
+            <view class="timer">{{tools.formatDay(item.goods.issuedate)}}</view>
+        </view>    
           <view class="center">
-            <image class="publish-image" src="{{item.imgSrc}}"></image>
+            <image class="publish-image" src="{{imageUrl+tools.image(item.goods.goodsimg)}}"></image>
             <view class="publish-detail">
-              <view class="publish-title">{{item.title}}</view>
-              <view class="publish-price">￥ {{item.price}}</view>
+              <view class="publish-title">{{item.goods.goodsname}}</view>
+              <view class="publish-price">￥ {{item.goods.goodsprice}}</view>
             </view>
           </view>
           <view class="bottom"> 
-                          <view wx:if="{{item.status==1}}" class="cancel" catchtap="cancel" data-ord="{{item}}">取消订单</view>
-                          <view wx:if="{{item.status==1}}" class="confirm" catchtap="confirm" data-ord="{{item}}">确认出货</view>
-                          <view wx:if="{{item.status==0||item.status==2||item.status==3}}" class="cancel" catchtap="delete" data-ord="{{item}}">删除</view>
-                          <view wx:if="{{item.status==3}}" class="republish" catchtap="republish" data-ord="{{item}}">再次发布</view>
+                          <view  class="cancel" catchtap="cancel" data-ord="{{item}}">取消订单</view>
+                          <view class="confirm" catchtap="confirm" data-ord="{{item}}">确认出货</view>
+                         
           </view>
-       </view>
-     </block>
-</view>
-<view class="nocontent" wx:if="{{publishList.length==0}}">
+       </view> 
+      </block>
+</view>  
+
+
+<view class="publish-container" wx:if="{{tabid!==2}}">
+  <block class="publish-item"  wx:for="{{checkedGood}}">
+       <view  class="publish-item" bindtap="toDetail"   data-item="{{item}}"> 
+          <view class="top">
+            <image src="/images/ziyuan.png"></image>
+            <view class="status" wx:if="{{item.state==1}}">待出售</view>
+            <view class="status" wx:if="{{item.state==2}}">交易中</view>
+            <view class="status" wx:if="{{item.state==3}}">已售出</view>
+            <view class="status" wx:if="{{item.state==4}}">已下架</view>
+            <view class="timer">{{tools.formatDay(item.time)}}</view>
+        </view>    
+          <view class="center">
+            <image class="publish-image" src="{{imageUrl+tools.image(item.goodsimg)}}"></image>
+            <view class="publish-detail">
+              <view class="publish-title">{{item.goodsname}}</view>
+              <view class="publish-price">￥ {{item.goodsprice}}</view>
+            </view>
+          </view>
+          <view class="bottom"> 
+                          <view wx:if="{{item.state==2}}" class="cancel" catchtap="cancel" data-ord="{{item}}">取消订单</view>
+                          <view wx:if="{{item.state==2}}" class="confirm" catchtap="confirm" data-ord="{{item}}">确认出货</view>
+                          <view wx:if="{{item.state==1}}" class="cancel" catchtap="delete" data-ord="{{item}}">取消发布</view>
+                          <view wx:if="{{item.state==3||item.state==4}}" class="cancel" catchtap="delete" data-ord="{{item}}">删除</view>
+                          <view wx:if="{{item.state==4}}" class="republish" catchtap="republish" data-ord="{{item}}">再次发布</view>
+          </view>
+       </view> 
+      </block>
+</view> 
+<!-- <view class="nocontent" wx:if="{{publishList.length==0}}">
       <image src="/images/nodata.png"></image>
       <view class="blank_text">这里空空如也~</view>
-</view>
+</view> -->
  </view>
 

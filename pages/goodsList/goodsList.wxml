@@ -12,8 +12,7 @@
       <van-card custom-class="goodscard" data-item="{{item}}" bindtap="goInfo" centered="{{true}}" price="{{ item.goodsprice }}" desc="{{ tools.sub(item.goodsdesc,0,30) }}" thumb="{{ imageUrl+tools.image(item.goodsimg) }}" thumb-mode="scaleToFill">
         <view slot="title">
           {{ item.goodsname }}
-          <view class="title">
-            <van-icon name="clock-o" /> {{ tools.format(item.issuedate) }}</view>
+          <view class="title"> <van-icon name="clock-o" /> {{ tools.format(item.issuedate) }}</view>
         </view>
         <!-- <view class="location" slot="num">
           <view>

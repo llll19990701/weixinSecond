@@ -43,11 +43,11 @@
    </view>
     
  </view> -->
- <view class="notice-box" wx:if="{{noticeList}}">
+ <view class="notice-box" wx:if="{{noticeList}}"  >
   <swiper class="notice_swiper" vertical autoplay circular interval="8000">
-    <swiper-item wx:for="{{noticeList}}" wx:key="id">
-      <van-notice-bar wx:if="{{noticeList}}" mode="link" text="{{ item.title }}" background="#FFFFFF"
-        data-id="{{ item.id }}" speed="30" bind:click="goNotice">
+    <swiper-item wx:for="{{notice}}" wx:key="id"  bindtap="toNoticeDetail" data-notice="{{item}}">
+      <van-notice-bar wx:if="{{notice}}" mode="link" text="{{convetNotice}}" background="#FFFFFF"
+        data-id="{{ item.mid }}" speed="30" bind:click="goNotice" >
         <image slot="left-icon" class="notice-icon" src="/images/zuixingonggao_3.png" lazy-load/>
       </van-notice-bar>
     </swiper-item>
@@ -61,7 +61,7 @@
       <view class="qiuGouText">话题广场</view>
      </view>
      <view class="topic">
-     <view class="topicText">求购中心</view>
+     <view class="topicText" bindtap="toQiuGou">求购中心</view>
      </view>
    </view>
 </view>
